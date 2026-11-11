@@ -1,5 +1,21 @@
 export type ProjectCategory = 'Graduate research' | 'Undergraduate project'
 
+export interface EvidenceMetric {
+  value: string
+  label: string
+  context: string
+}
+
+export interface CaseStudy {
+  problem: string
+  contributions: string[]
+  architecture: string[]
+  methodology: string[]
+  metrics?: EvidenceMetric[]
+  results: string[]
+  limitations: string[]
+}
+
 export interface Project {
   id: string
   title: string
@@ -24,6 +40,7 @@ export interface Project {
   resources?: string
   publicationIds?: string[]
   media?: { type: 'image' | 'video'; label: string }[]
+  caseStudy?: CaseStudy
 }
 
 export type PublicationCategory =

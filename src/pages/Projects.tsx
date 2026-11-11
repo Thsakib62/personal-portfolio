@@ -6,6 +6,7 @@ import {
   researchProjects,
   undergraduateProjects,
 } from '../data/portfolio'
+import type { EvidenceMetric } from '../data/models'
 import { PageIntro, ProjectCard, SectionHeading, Tag } from '../components/ui'
 
 const allProjects = [...researchProjects, ...undergraduateProjects]
@@ -76,29 +77,52 @@ export function Projects() {
   )
 }
 
+interface CaseSectionData {
+  id: string
+  title: string
+  paragraphs?: string[]
+  items?: string[]
+  metrics?: EvidenceMetric[]
+}
+
 function DetailSection({
   id,
   title,
-  content,
-}: {
-  id: string
-  title: string
-  content?: string | string[]
-}) {
-  if (!content || (Array.isArray(content) && !content.length)) return null
+  paragraphs,
+  items,
+  metrics,
+}: CaseSectionData) {
   return (
     <section id={id} className="case-section">
       <h2>{title}</h2>
-      {Array.isArray(content) ? (
+      {paragraphs?.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      {items && (
         <ul>
-          {content.map((item) => (
+          {items.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
-      ) : (
-        <p>{content}</p>
       )}
+      {metrics && <EvidenceHighlights metrics={metrics} />}
     </section>
+  )
+}
+
+function EvidenceHighlights({ metrics }: { metrics: EvidenceMetric[] }) {
+  return (
+    <dl className="evidence-grid" aria-label="Selected research metrics">
+      {metrics.map((metric) => (
+        <div className="evidence-card" key={metric.label}>
+          <dt>{metric.label}</dt>
+          <dd>
+            <strong>{metric.value}</strong>
+            <span>{metric.context}</span>
+          </dd>
+        </div>
+      ))}
+    </dl>
   )
 }
 
@@ -122,17 +146,85 @@ export function ProjectDetail() {
     )
   const index = allProjects.indexOf(project)
   const next = allProjects[index + 1]
-  const sections: [string, string, string | string[] | undefined][] = [
-    ['problem', 'Research problem', project.problem],
-    ['contributions', 'My contributions', project.contributions],
-    ['approach', 'Technical approach', project.approach],
-    ['architecture', 'System architecture', project.architecture],
-    ['implementation', 'Implementation & technologies', project.implementation],
-    ['evaluation', 'Experimental evaluation', project.evaluation],
-    ['findings', 'Results & findings', project.findings],
-  ]
+  const study = project.caseStudy
+  const sections: CaseSectionData[] = study
+    ? [
+        {
+          id: 'problem',
+          title: 'Research problem',
+          paragraphs: [study.problem],
+        },
+        {
+          id: 'contributions',
+          title: 'Technical contribution',
+          items: study.contributions,
+        },
+        {
+          id: 'architecture',
+          title: 'System architecture & implementation',
+          paragraphs: study.architecture,
+        },
+        {
+          id: 'evaluation',
+          title: 'Experimental methodology',
+          paragraphs: study.methodology,
+        },
+        {
+          id: 'findings',
+          title: 'Selected evidence-backed results',
+          paragraphs: study.results,
+          metrics: study.metrics,
+        },
+        {
+          id: 'limitations',
+          title: 'Limitations & scope',
+          items: study.limitations,
+        },
+      ]
+    : [
+        {
+          id: 'problem',
+          title: 'Research problem',
+          paragraphs: project.problem ? [project.problem] : undefined,
+        },
+        {
+          id: 'contributions',
+          title: 'Technical contribution',
+          items: project.contributions,
+        },
+        {
+          id: 'approach',
+          title: 'Technical approach',
+          paragraphs: project.approach ? [project.approach] : undefined,
+        },
+        {
+          id: 'architecture',
+          title: 'System architecture',
+          paragraphs: project.architecture ? [project.architecture] : undefined,
+        },
+        {
+          id: 'implementation',
+          title: 'Implementation & technologies',
+          paragraphs: project.implementation
+            ? [project.implementation]
+            : undefined,
+        },
+        {
+          id: 'evaluation',
+          title: 'Experimental evaluation',
+          paragraphs: project.evaluation ? [project.evaluation] : undefined,
+        },
+        {
+          id: 'findings',
+          title: 'Results & findings',
+          paragraphs: project.findings ? [project.findings] : undefined,
+        },
+      ]
   const available = sections.filter(
-    ([, , content]) => content && (!Array.isArray(content) || content.length),
+    (section) =>
+      section.paragraphs?.length ||
+      section.items?.length ||
+      section.metrics?.length,
   )
   return (
     <div className="container page-content case-study">
@@ -161,27 +253,27 @@ export function ProjectDetail() {
         <nav className="case-nav" aria-label="Case study sections">
           <p className="eyebrow">On this page</p>
           <a href="#overview">Overview</a>
-          {available.map(([key, title]) => (
-            <a key={key} href={`#${key}`}>
-              {title}
+          {available.map((section) => (
+            <a key={section.id} href={`#${section.id}`}>
+              {section.title}
             </a>
           ))}
           {(project.resources || project.publicationIds?.length) && (
-            <a href="#resources">Publications & resources</a>
+            <a href="#resources">Related publication & status</a>
           )}
-          <a href="#media">Images & videos</a>
+          <a href="#media">Reserved media</a>
         </nav>
         <div className="case-content">
           <section id="overview" className="case-section">
             <h2>Overview</h2>
             <p>{project.description}</p>
           </section>
-          {available.map(([key, title, content]) => (
-            <DetailSection key={key} id={key} title={title} content={content} />
+          {available.map((section) => (
+            <DetailSection key={section.id} {...section} />
           ))}
           {(project.resources || project.publicationIds?.length) && (
             <section id="resources" className="case-section">
-              <h2>Publications & resources</h2>
+              <h2>Related publication & status</h2>
               {project.resources && <p>{project.resources}</p>}
               {project.publicationIds?.map((publicationId) => {
                 const paper = publications.find(
@@ -203,9 +295,10 @@ export function ProjectDetail() {
             </section>
           )}
           <section id="media" className="case-section">
-            <h2>Images & videos</h2>
+            <h2>Reserved media</h2>
             <p>
-              Research images and videos are not available for this case study.
+              Photographs, figures, and videos will appear here after
+              asset-specific permission and accuracy review.
             </p>
             <div className="media-grid">
               {(

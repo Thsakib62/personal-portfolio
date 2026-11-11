@@ -145,13 +145,13 @@ test('project filters and case-study navigation stay accessible', async ({
   await page.getByRole('button', { name: 'Systems security' }).click()
   await expect(page.getByText('Showing 1 graduate project')).toBeVisible()
   await page
-    .getByRole('link', { name: 'ROS 2 / SROS2 supply-chain security' })
+    .getByRole('link', { name: 'SROS2 supply-chain security on QCar2' })
     .click()
   await expect(page).toHaveURL('/projects/ros-security')
   await expect(
     page.getByRole('navigation', { name: 'Case study sections' }),
   ).toBeVisible()
-  await page.getByRole('link', { name: 'Experimental evaluation' }).click()
+  await page.getByRole('link', { name: 'Experimental methodology' }).click()
   await expect(page.locator('#evaluation')).toBeInViewport()
   await page
     .getByRole('link', {
@@ -160,6 +160,63 @@ test('project filters and case-study navigation stay accessible', async ({
     .click()
   await expect(page).toHaveURL('/research#milcom-2025')
   await expect(page.locator('#milcom-2025')).toBeInViewport()
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
+})
+
+test('research case studies keep evidence units and media boundaries clear', async ({
+  page,
+}, testInfo) => {
+  await page.goto('/projects/physical-attacks')
+  await expect(page.getByText('8/18 → 0/18')).toBeVisible()
+  await expect(page.locator('#limitations')).toContainText(
+    'cannot be attributed solely to detector weights',
+  )
+
+  await page.goto('/projects/pulse')
+  await expect(page.getByText('18/20')).toBeVisible()
+  await expect(page.getByText('20/20')).toBeVisible()
+  await expect(page.locator('#evaluation')).toContainText(
+    'replayed recorded QCar2',
+  )
+  await expect(page.locator('#limitations')).toContainText('stop line')
+
+  await page.goto('/projects/redap')
+  await expect(page.getByText('151 frames')).toBeVisible()
+  await expect(page.getByText('57/151 → 110/151')).toBeVisible()
+  await expect(page.locator('#evaluation')).toContainText(
+    'offline after capture',
+  )
+  await expect(page.locator('#findings')).toContainText('poor protected-region')
+  await page.screenshot({
+    path: `test-results/redap-case-${testInfo.project.name}.png`,
+    fullPage: true,
+  })
+
+  await page.goto('/projects/ros-security')
+  await expect(page.locator('#limitations')).toContainText(
+    'does not independently verify claimed physical collisions',
+  )
+  await expect(page.locator('#media')).toContainText('permission')
+  await expect(page.locator('#media img, #media video')).toHaveCount(0)
+
+  await page.goto('/projects/qcar')
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('QCar1')
+  await page.goto('/projects/qcar2')
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('QCar2')
+  await expect(page.locator('#architecture')).toContainText(
+    'not one identical software stack',
+  )
+
+  await page.goto('/projects/naturalistic-patches')
+  await expect(page.locator('#contributions')).toContainText('Coauthored')
+  await expect(page.locator('#resources')).toContainText(
+    'Physical Evaluation of Naturalistic Adversarial Patches',
+  )
+  await expect(page.locator('.evidence-grid')).toHaveCount(0)
+
+  await page.goto('/projects/lapse')
+  await expect(page.locator('#findings')).toHaveCount(0)
+  await expect(page.locator('#resources')).toContainText('not included')
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
 })
 

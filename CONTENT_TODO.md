@@ -1,56 +1,43 @@
-# Content required before launch
+# Content verification and asset checklist
 
-The current site is a foundation, not a finalized academic record. Do not replace missing information with inferred facts.
+This portfolio separates supported facts from provisional wording. Review the supplied brief and paper bundle against official records before public launch. Do not add unpublished PDFs, copyrighted research files, a personal phone number, or sensitive security implementation detail.
 
-## Personal profile and contact
+## Publication verification
 
-- [ ] Approve the biography and research identity wording.
-- [ ] Provide a professional portrait, permission to use it, and preferred alt text/crop.
-- [ ] Provide a verified public email address and contact preferences.
-- [ ] Provide verified professional links: GitHub, LinkedIn, Google Scholar, ORCID, institutional/lab profile, and personal domain, as applicable. Do not infer profile URLs from usernames or names.
-- [ ] Confirm official graduate degree wording, department name, affiliation, research role/title, and advisor/lab details if they should appear.
-- [ ] Reconfirm expected completion in December 2026; update to completion only after confirmation.
+- [ ] Recheck the official IEEE records, exact author order, page ranges, and final citation format for SATC 2026, MILCOM 2025, and ACMI 2021. DOI links are present, but publication details may change.
+- [ ] Confirm whether the MECC 2025 preprint has a final proceedings citation, permanent link, and peer-reviewed publication status.
+- [ ] Confirm the IEEE Access-styled manuscript's submission and publication status. Its template DOI and footer year must not be used as citation evidence.
+- [ ] Confirm any additional manuscripts, thesis, preprints, or work in progress and obtain approved references. REDAP and PULSE are projects, with no inferred publication mapping.
+- [ ] Add page ranges, volume/issue where applicable, and publisher-exported BibTeX if the generated minimal citations need replacement.
+- [ ] Review copyright and permissions before linking to or hosting papers, slides, posters, or manuscript PDFs.
 
-## Publications — verify every entry
+## Research projects and media
 
-Owner-provided context includes IEEE ACMI 2021, MECC 2025, MILCOM 2025, and additional recent research. These are currently venue/year placeholders and are not final citations or acceptance claims.
+- [ ] Confirm individual contributions, collaborators, dates, experimental protocols, limitations, and public outcomes for each graduate case study.
+- [ ] Supply approved QCar1 and QCar2 photographs with captions and alt text; identify which setup appears in each image.
+- [ ] Supply approved REDAP, PULSE, LAPSE, ROS 2, CARLA, and sensor-system diagrams or figures with meaningful alt text.
+- [ ] Supply experiment demonstration videos with captions/transcripts and permission to publish.
+- [ ] Supply validated quantitative results and their evaluation context; no metrics are currently asserted.
+- [ ] Confirm that ROS 2/SROS2 details, research diagrams, and manuscripts are safe for public disclosure.
 
-- [ ] Verify each paper's exact title, full author order, venue name, year, publication/acceptance/submission status, and official source.
-- [ ] Verify dates, volume/issue/pages, DOI, proceedings URL, and BibTeX where applicable.
-- [ ] Confirm which entries belong in selected publications; add additional recent work only with supplied evidence.
-- [ ] Confirm whether each research project relates to any publication. Never infer a relationship or merge REDAP, PULSE, and other efforts into one paper.
-- [ ] Obtain permission before sharing manuscripts, PDFs, slides, posters, or figures; preserve copyright restrictions.
-- [ ] Clearly label preprints, submitted work, and work in progress; do not imply acceptance.
+## Profile, education, experience, and achievements
 
-## Graduate research and engineering (primary emphasis)
+- [ ] Provide a professional portrait and permission to publish it.
+- [ ] Confirm the official master's degree wording and graduation date. Later resumes say M.S. Electrical and Computer Engineering, expected December 2026; earlier variants say Computer Engineering and July 2026.
+- [ ] Confirm master's GPA, institution/department wording, and advisor/lab names if public.
+- [ ] Confirm undergraduate degree wording and completion date.
+- [ ] Confirm Graduate Research Assistant role dates and descriptions, Robi internship responsibilities, and any missing project dates.
+- [ ] Confirm Banglalink award wording and year, SSC/HSC scholarship years, and leadership role dates/responsibilities.
+- [ ] Confirm individual roles and exact technologies for the five undergraduate projects.
 
-For REDAP, PULSE, physical adversarial traffic-sign attacks, QCar1/QCar2 testbeds, ROS 2/SROS2 security, camera–LiDAR fusion, NVIDIA Jetson/YOLO deployment, and CARLA evaluation:
+## Links and documents
 
-- [ ] Confirm project scope, dates, individual role, collaborators, and current stage.
-- [ ] Supply approved case-study text: question, approach, implementation, evaluation setup, limitations, and outcomes.
-- [ ] Supply verified repository/demo links and their visibility/license status.
-- [ ] Supply labeled research photos, system diagrams, plots, video demos, captions, alt text, video transcripts/captions, and permission to publish.
-- [ ] Add quantitative results only with verified evidence and clear evaluation context.
-- [ ] Confirm no sensitive security details or non-public collaborative work is disclosed.
+- [ ] Provide and verify public email, GitHub, LinkedIn, Google Scholar, ORCID, lab/institution profile, and personal domain links as applicable.
+- [ ] Provide final academic CV and role-specific resume PDFs in a later phase; check accessibility and private information before adding downloads.
+- [ ] Provide approved repository and demo links. There are no guessed URLs in the site.
+- [ ] Set final canonical URL and social preview assets after a domain is selected.
 
-## Earlier projects and experience (secondary emphasis)
+## Final review
 
-- [ ] Supply dates, roles, approved screenshots, and verified links for the five undergraduate projects.
-- [ ] Verify industrial training responsibilities at Robi Axiata Limited (December 2019–January 2020).
-- [ ] Provide dates and approved responsibilities for MIST Computer Club treasurer and Human Being Society Forever co-founder roles.
-- [ ] Confirm award wording for Banglalink SDG Hackathon, Code for a Cause (third runner-up, 2018).
-- [ ] Supply scholarship years and official wording for SSC and HSC Board Scholarships if desired.
-
-## CV / resume assets
-
-- [ ] Provide final academic CV and industry resume PDFs with verified content.
-- [ ] Ensure PDFs have selectable text, accessible headings, correct links, and no unintended private information.
-- [ ] Add real download links, file size, and last-updated dates only once assets exist; do not create empty files or broken links.
-
-## Final launch review
-
-- [ ] Replace or explicitly approve remaining visual and bibliographic placeholders.
-- [ ] Review copy, mobile layouts, keyboard interaction, and light/dark contrast on real devices.
-- [ ] Confirm final domain, canonical URL, social preview image, and metadata; do not invent them.
-- [ ] Decide whether analytics are needed; none are installed.
-- [ ] Confirm intended public content and authorize deployment separately. No public deployment is part of this foundation task.
+- [ ] Review mobile layouts, keyboard interaction, contrast, and both themes on real devices.
+- [ ] Review all public copy and status labels, then authorize deployment separately. This development phase does not deploy the site.

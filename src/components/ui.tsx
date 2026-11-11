@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useState } from 'react'
 import {
   ArrowDown,
   ArrowUpRight,
@@ -9,6 +10,7 @@ import {
   ShieldCheck,
   ScanLine,
   Cpu,
+  Copy,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { Project, Publication } from '../data/portfolio'
@@ -57,10 +59,7 @@ export function ProjectCard({
         ? Activity
         : CircuitBoard
   return (
-    <article
-      className={`project-card ${compact ? 'compact' : ''}`}
-      id={project.id}
-    >
+    <article className={`project-card ${compact ? 'compact' : ''}`}>
       {!compact && (
         <div
           className={`project-visual ${project.visual ?? 'vehicle'}`}
@@ -79,7 +78,7 @@ export function ProjectCard({
       <div className="project-body">
         <p className="card-kicker">{project.category}</p>
         <h3>
-          <Link to={`/projects#${project.id}`}>
+          <Link to={`/projects/${project.id}`}>
             {project.title}
             <ArrowUpRight size={18} aria-hidden="true" />
           </Link>
@@ -100,20 +99,57 @@ export function PublicationEntry({
 }: {
   publication: Publication
 }) {
+  const [copyStatus, setCopyStatus] = useState('')
+  const canCite =
+    publication.category === 'Published peer-reviewed work' &&
+    publication.authors &&
+    publication.venue &&
+    publication.year &&
+    publication.doi
+  const copyBibtex = async () => {
+    if (!canCite) return
+    const citation = `@inproceedings{${publication.id.replace(/-/g, '')},\n  author = {${publication.authors!.split(', ').join(' and ')}},\n  title = {${publication.title}},\n  booktitle = {${publication.venue}},\n  year = {${publication.year}},\n  doi = {${publication.doi}}\n}`
+    try {
+      await navigator.clipboard.writeText(citation)
+      setCopyStatus('BibTeX copied')
+    } catch {
+      setCopyStatus('Copy unavailable in this browser')
+    }
+  }
   return (
-    <article className="publication-entry">
-      <span className="publication-year">{publication.year}</span>
+    <article className="publication-entry" id={publication.id}>
+      <span className="publication-year">{publication.year ?? '—'}</span>
       <div>
         <p className="card-kicker">
-          {publication.venueContext} · Verification pending
+          {publication.venue ??
+            publication.venueContext ??
+            publication.category}
         </p>
-        <h3>Publication details to be confirmed</h3>
-        <p className="muted">
-          {publication.verification}. Title, authors, and citation will be added
-          after verification.
-        </p>
+        <h3>{publication.title}</h3>
+        {publication.authors && <p className="muted">{publication.authors}</p>}
+        <p className="muted">{publication.status}</p>
+        {publication.note && <p className="muted small">{publication.note}</p>}
+        {publication.url && (
+          <a
+            className="text-link"
+            href={publication.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Official DOI <ArrowUpRight size={15} />
+          </a>
+        )}
+        {canCite && (
+          <button className="cite-button" type="button" onClick={copyBibtex}>
+            <Copy size={14} />
+            Copy BibTeX
+          </button>
+        )}
+        <span className="sr-only" role="status">
+          {copyStatus}
+        </span>
       </div>
-      <span className="draft-label">Draft entry</span>
+      <span className="draft-label">{publication.category}</span>
     </article>
   )
 }

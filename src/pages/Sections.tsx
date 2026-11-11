@@ -6,116 +6,9 @@ import {
   Mail,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import {
-  achievements,
-  education,
-  experience,
-  publications,
-  researchProjects,
-  skills,
-  undergraduateProjects,
-} from '../data/portfolio'
-import {
-  ComingSoon,
-  ContactCTA,
-  PageIntro,
-  ProjectCard,
-  PublicationEntry,
-  SectionHeading,
-  Tag,
-} from '../components/ui'
+import { achievements, education, experience, skills } from '../data/portfolio'
+import { PageIntro, SectionHeading, Tag } from '../components/ui'
 
-export function Research() {
-  return (
-    <>
-      <div className="container page-content">
-        <PageIntro
-          eyebrow="Research & publications"
-          title="Building trust into autonomy."
-        >
-          Research directions spanning perception security, resilient
-          cyber-physical systems, and embedded intelligence.
-        </PageIntro>
-        <ComingSoon title="Research overview · foundation edition">
-          Detailed research narratives, verified citations, and supporting
-          materials will be added as they become available. The efforts below
-          are distinct; no publication status is implied.
-        </ComingSoon>
-        <div className="project-grid two-columns">
-          {researchProjects.map((project) => (
-            <ProjectCard compact project={project} key={project.id} />
-          ))}
-        </div>
-        <section className="inner-section">
-          <SectionHeading
-            eyebrow="Publication record / draft"
-            title="Verification before citation."
-          >
-            Venue names below are owner-provided context only. They are not
-            confirmed citations or acceptance claims.
-          </SectionHeading>
-          {publications.map((publication) => (
-            <PublicationEntry key={publication.id} publication={publication} />
-          ))}
-        </section>
-        <section className="inner-section">
-          <SectionHeading
-            eyebrow="Methods & systems"
-            title="Research toolkit"
-          />
-          <div className="skills-grid">
-            {skills.map((group) => (
-              <article key={group.area}>
-                <h3>{group.area}</h3>
-                <div className="tags">
-                  {group.items.map((item) => (
-                    <Tag key={item}>{item}</Tag>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      </div>
-      <ContactCTA />
-    </>
-  )
-}
-export function Projects() {
-  return (
-    <div className="container page-content">
-      <PageIntro eyebrow="Project index" title="Ideas, made tangible.">
-        A growing collection of research and engineering work, from autonomous
-        systems to machine learning applications.
-      </PageIntro>
-      <ComingSoon title="Project index · foundation edition">
-        Case studies, repositories, diagrams, and demonstrations are pending.
-        These summaries reflect the supplied background without adding outcomes
-        or metrics.
-      </ComingSoon>
-      <SectionHeading
-        eyebrow="Primary focus"
-        title="Graduate research & engineering"
-      />
-      <div className="project-grid two-columns">
-        {researchProjects.map((project) => (
-          <ProjectCard compact project={project} key={project.id} />
-        ))}
-      </div>
-      <section className="inner-section" id="undergraduate">
-        <SectionHeading eyebrow="Earlier work" title="Undergraduate projects">
-          Selected foundations in machine learning, software development, and
-          applied computing.
-        </SectionHeading>
-        <div className="project-grid two-columns">
-          {undergraduateProjects.map((project) => (
-            <ProjectCard compact project={project} key={project.id} />
-          ))}
-        </div>
-      </section>
-    </div>
-  )
-}
 export function Experience() {
   return (
     <div className="container page-content">
@@ -123,52 +16,70 @@ export function Experience() {
         eyebrow="Experience & education"
         title="A foundation for what’s next."
       >
-        Academic preparation, early industry exposure, and leadership beyond the
-        lab.
+        Research practice, embedded engineering, software foundations, and
+        leadership.
       </PageIntro>
-      <ComingSoon title="Background overview · foundation edition">
-        Expanded responsibilities, supporting links, and additional verified
-        experience will follow.
-      </ComingSoon>
-      <SectionHeading eyebrow="Academic background" title="Education" />
+      <SectionHeading eyebrow="Research & industry" title="Experience" />
       <div className="timeline">
-        {education.map((item) => (
-          <article key={item.institution}>
-            <GraduationCap size={24} />
+        {experience.map((item) => (
+          <article key={item.organization}>
+            <BriefcaseBusiness size={23} />
             <div>
               <p className="card-kicker">
-                {item.period} · {item.location}
+                {item.period ?? 'Dates to be confirmed'}
               </p>
-              <h3>{item.institution}</h3>
-              <p>{item.qualification}</p>
+              <h3>{item.role}</h3>
+              <p>{item.organization}</p>
               <p className="muted">{item.description}</p>
-              <Tag>{item.note}</Tag>
             </div>
           </article>
         ))}
       </div>
       <section className="inner-section">
-        <SectionHeading eyebrow="Industry & leadership" title="Experience" />
+        <SectionHeading eyebrow="Academic background" title="Education" />
         <div className="timeline">
-          {experience.map((item) => (
-            <article key={item.organization}>
-              <BriefcaseBusiness size={23} />
+          {education.map((item) => (
+            <article key={item.institution}>
+              <GraduationCap size={24} />
               <div>
                 <p className="card-kicker">
-                  {item.period ?? 'Dates to be confirmed'}
+                  {item.period} · {item.location}
                 </p>
-                <h3>{item.role}</h3>
-                <p>{item.organization}</p>
+                <h3>{item.institution}</h3>
+                <p>{item.qualification}</p>
+                <p className="muted">{item.description}</p>
+                <p className="verification-note">{item.note}</p>
               </div>
             </article>
           ))}
         </div>
       </section>
       <section className="inner-section">
-        <SectionHeading eyebrow="Recognition" title="Achievements" />
+        <SectionHeading eyebrow="Technical practice" title="Skills" />
+        <div className="skills-grid">
+          {skills.map((group) => (
+            <article className="skill-card" key={group.area}>
+              <h3>{group.area}</h3>
+              <div className="tags">
+                {group.items.map((item) => (
+                  <Tag key={item}>{item}</Tag>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="inner-section">
+        <SectionHeading
+          eyebrow="Recognition & leadership"
+          title="Achievements"
+        />
         <ul className="achievement-list">
           {achievements.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item.title}>
+              <strong>{item.title}</strong>
+              <span className="muted">{item.detail}</span>
+            </li>
           ))}
         </ul>
       </section>

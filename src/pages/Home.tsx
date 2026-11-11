@@ -141,20 +141,13 @@ export function Home() {
             trust becomes an engineering problem.
           </p>
           <p>
-            I’m pursuing master’s studies in Electrical and Computer Engineering
-            at Tennessee Technological University, with expected completion in
-            December 2026. My research explores the security and resilience of
-            autonomous vehicles, from adversarial attacks on visual perception
-            to embedded defense and runtime monitoring.
-          </p>
-          <p>
-            My foundation in Computer Science and Engineering at MIST connects
-            software, machine learning, and hands-on engineering. I’m interested
-            in turning research questions into practical, carefully evaluated
-            systems.
+            As a Graduate Research Assistant at Tennessee Technological
+            University, I study adversarial perception, embedded defense,
+            runtime monitoring, and secure robotics through physical and
+            simulated vehicle experiments.
           </p>
           <Link className="text-link" to="/experience">
-            My background
+            Education & experience
             <ArrowUpRight size={17} />
           </Link>
         </div>
@@ -196,8 +189,8 @@ export function Home() {
             ))}
         </div>
         <p className="section-footnote">
-          Research areas and project descriptions; publication status and
-          results are not implied.
+          Explore each project for its specific testbed, methods, and current
+          evidence.
         </p>
       </section>
       <section className="section publication-section">
@@ -207,8 +200,8 @@ export function Home() {
             title="Research, in writing."
             link={{ to: '/research', label: 'Research & publications' }}
           >
-            A selected-publications preview. Bibliographic details are being
-            verified before final citations are listed.
+            Selected conference research. Each entry links to its status and
+            source context on the Research page.
           </SectionHeading>
           <div className="publication-list">
             {publications.slice(0, 2).map((publication) => (
@@ -239,7 +232,7 @@ export function Home() {
           ))}
         </div>
         <div className="experience-preview">
-          <p className="card-kicker">Early industry experience</p>
+          <p className="card-kicker">Current research experience</p>
           <p>
             <strong>
               {experience[0].role} · {experience[0].organization}

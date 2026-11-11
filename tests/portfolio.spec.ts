@@ -93,10 +93,10 @@ test('all routes load directly without horizontal overflow or inaccessible conte
     await page.getByRole('button', { name: 'Switch to light theme' }).click()
   }
   await page.goto('/cv')
-  await expect(page.getByText('PDF asset pending')).toHaveCount(2)
+  await expect(page.getByText('Not available online')).toHaveCount(2)
   await expect(page.locator('a[download]')).toHaveCount(0)
   await page.goto('/contact')
-  await expect(page.getByText('Email & profile links pending')).toBeVisible()
+  await expect(page.getByText('Contact details unavailable')).toBeVisible()
   await expect(page.locator('form')).toHaveCount(0)
 })
 
@@ -184,4 +184,44 @@ test('keyboard skip link and reduced motion work without persistent storage', as
   await page.getByRole('button', { name: 'Switch to dark theme' }).click()
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+})
+
+test('public pages keep publication status and omit editorial notes', async ({
+  page,
+}) => {
+  for (const route of [
+    '/',
+    '/research',
+    '/projects',
+    '/projects/physical-attacks',
+    '/projects/lapse',
+    '/experience',
+    '/cv',
+    '/contact',
+  ]) {
+    await page.goto(route)
+    await expect(page.locator('main')).not.toContainText(
+      /provisional|per source resumes|variants differ|confirm official record|details remain to be checked|public quantitative claims await approval|the supplied brief/i,
+    )
+  }
+  await page.goto('/research')
+  await expect(page.locator('#access-manuscript')).toContainText(
+    'Manuscript status unverified',
+  )
+  await expect(page.locator('#mecc-2025')).toContainText(
+    'Conference preprint · proceedings status unverified',
+  )
+  await page.goto('/experience')
+  for (const heading of [
+    'Research experience',
+    'Education',
+    'Skills',
+    'Internship',
+    'Leadership',
+    'Achievements',
+  ]) {
+    await expect(
+      page.getByRole('heading', { name: heading, exact: true }),
+    ).toBeVisible()
+  }
 })

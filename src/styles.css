@@ -111,14 +111,14 @@ main:focus {
   color: var(--accent);
 }
 .section {
-  padding-block: 95px;
+  padding-block: 78px;
 }
 .section-heading {
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 32px;
-  margin-bottom: 38px;
+  margin-bottom: 32px;
 }
 .section-heading h2 {
   margin-top: 15px;
@@ -521,7 +521,7 @@ main:focus {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.35fr;
-  gap: 100px;
+  gap: 60px;
 }
 .about-grid h2 {
   margin-top: 20px;
@@ -550,7 +550,7 @@ main:focus {
 .interest-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 45px;
+  gap: 32px;
 }
 .interest-card {
   padding-top: 10px;
@@ -582,6 +582,8 @@ main:focus {
   gap: 22px;
 }
 .project-card {
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--line);
   border-radius: 5px;
   overflow: hidden;
@@ -665,6 +667,12 @@ main:focus {
 }
 .project-body {
   padding: 26px 23px 24px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.project-body .tags {
+  margin-top: auto;
 }
 .card-kicker {
   font:
@@ -749,7 +757,7 @@ main:focus {
 .education-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 45px;
+  gap: 30px;
 }
 .education-card {
   border-top: 1px solid var(--line);

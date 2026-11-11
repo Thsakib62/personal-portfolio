@@ -17,7 +17,7 @@ export const researchProjects: Project[] = [
     title: 'REDAP',
     subtitle: 'Real-time adversarial patch defense at the edge',
     description:
-      'A restoration-based defense for traffic-sign perception, evaluated in embedded and closed-loop settings.',
+      'Restoration-based traffic-sign perception defense with Jetson Orin Nano deployment and QCar2 and CARLA closed-loop evaluation.',
     tags: ['Adversarial ML', 'Jetson Orin Nano', 'TensorRT', 'QCar2', 'CARLA'],
     category: 'Graduate research',
     focus: 'Perception security',
@@ -26,24 +26,22 @@ export const researchProjects: Project[] = [
     problem:
       'Physical patches can disrupt traffic-sign perception when a vehicle must react in real time.',
     contributions: [
-      'Investigating restoration-based patch defense for embedded perception.',
-      'Connecting edge deployment with QCar2 and CARLA closed-loop evaluation.',
+      'Studying localized visual restoration before downstream traffic-sign perception.',
+      'Connecting Jetson Orin Nano and TensorRT deployment to QCar2 and CARLA evaluation workflows.',
     ],
     approach:
       'Restore localized visual input before downstream perception and study behavior in closed-loop driving.',
     implementation:
       'Jetson Orin Nano and TensorRT are part of the reported edge deployment workflow.',
     evaluation:
-      'The brief identifies QCar2 and CARLA evaluations. Protocols and quantitative outcomes await approval.',
-    resources:
-      'Manuscript status, public links, and shareable artifacts are pending verification.',
+      'The reported evaluation uses QCar2 and CARLA closed-loop settings; quantitative outcomes are not stated here.',
   },
   {
     id: 'pulse',
     title: 'PULSE',
     subtitle: 'Runtime perception anomaly monitoring',
     description:
-      'Monitoring confidence, range, and temporal evidence to support fallback decisions when perception appears anomalous.',
+      'Runtime perception anomaly monitoring across confidence, range, and temporal signals to inform fallback decisions.',
     tags: ['Runtime monitoring', 'Autonomous systems', 'Fallback response'],
     category: 'Graduate research',
     focus: 'Perception security',
@@ -57,15 +55,13 @@ export const researchProjects: Project[] = [
     ],
     approach:
       'Compare multiple runtime signals over time before triggering a fallback response.',
-    resources:
-      'No publication relationship or public demonstration has been verified.',
   },
   {
     id: 'physical-attacks',
     title: 'Physical adversarial traffic-sign perception',
     subtitle: 'A QCar1 camera–LiDAR testbed',
     description:
-      'Physical stop-sign perturbations, waypoint-independent navigation, and adversarial-learning mitigation on QCar1.',
+      'QCar1 traffic-sign experiments combining YOLOv5n camera detections, 2D LiDAR ranging, and waypoint-independent control.',
     tags: ['QCar1', 'Camera–LiDAR', 'YOLOv5n', 'Adversarial learning'],
     category: 'Graduate research',
     focus: 'Perception security',
@@ -73,17 +69,17 @@ export const researchProjects: Project[] = [
     problem:
       'Digital attacks alone cannot show how physically altered signs affect a moving vehicle’s detection and stopping behavior.',
     contributions: [
-      'Developing and evaluating a waypoint-independent perception and control workflow.',
-      'Studying physically perturbed signs and a detector fine-tuning mitigation.',
+      'Integrating camera-based sign detection and LiDAR distance estimates into QCar1 navigation and stopping logic.',
+      'Testing physical sign perturbations and detector fine-tuning in the described QCar1 setup.',
     ],
     approach:
       'Combine camera-based YOLOv5n detection with 2D LiDAR distance information in a multithreaded QCar1 navigation loop.',
     architecture:
       'Camera detections provide sign semantics; LiDAR supplies distance estimates; navigation logic handles alignment, stopping, and turns.',
     evaluation:
-      'The supplied manuscript describes clean-sign baselines and repeated physical-sign trials. Final publication status remains unverified.',
+      'The manuscript describes clean-sign baselines and repeated physical-sign trials on QCar1.',
     findings:
-      'The manuscript reports that perturbations affected detection and that adversarial learning improved the tested behavior; public quantitative claims await review.',
+      'In the manuscript’s tested setup, perturbations affected detection and adversarial learning improved the reported behavior. The magnitude and generality of those effects are not established here.',
     publicationIds: ['access-manuscript'],
   },
   {
@@ -100,13 +96,13 @@ export const researchProjects: Project[] = [
     approach:
       'Build a composite traffic-sign dataset using target-platform backgrounds and evaluate printed patches on QCar1.',
     implementation:
-      'The supplied paper describes CSI camera capture, camera calibration, YOLOv5 training, and physical sign experiments.',
+      'The study uses CSI camera capture, camera calibration, YOLOv5 training, and physical sign experiments.',
     evaluation:
       'Patch size, placement, and distance are varied in the paper’s physical protocol.',
     findings:
       'The paper reports reduced STOP-class confidence for tested patches; the effect varies by configuration.',
     resources:
-      'A conference record is listed on the Research page. Research media require approval before publication.',
+      'The related SATC 2026 conference record is listed on the Research page.',
     publicationIds: ['satc-2026'],
   },
   {
@@ -123,13 +119,13 @@ export const researchProjects: Project[] = [
     approach:
       'Evaluate a supply-chain compromise and subsequent authenticated message spoofing within a controlled QCar2 testbed.',
     implementation:
-      'The supplied paper identifies ROS 2 Humble, SROS2, a QCar2 platform, and camera-based perception.',
+      'The proof of concept uses ROS 2 Humble, SROS2, a QCar2 platform, and camera-based perception.',
     evaluation:
       'The paper studies effects on control and perception messages in a four-stop-sign routine.',
     findings:
       'The proof of concept motivates supply-chain integrity and runtime semantic validation.',
     resources:
-      'The verified MILCOM 2025 record appears on the Research page. Operational attack details are intentionally omitted.',
+      'The related MILCOM 2025 workshop paper is listed on the Research page.',
     publicationIds: ['milcom-2025'],
   },
   {
@@ -144,11 +140,9 @@ export const researchProjects: Project[] = [
     problem:
       'Embedded perception-security results need repeatable conditions and comparable baselines.',
     contributions: [
-      'Reproducing and benchmarking a hardware-in-the-loop setup.',
-      'Investigating root causes under controlled baselines.',
+      'Reproducing a Jetson AGX Orin hardware-in-the-loop setup with controlled baselines.',
+      'Benchmarking embedded perception-security behavior and investigating root causes.',
     ],
-    evaluation:
-      'Specific protocols, results, and public artifacts are pending approval.',
   },
   {
     id: 'qcar',
@@ -164,14 +158,13 @@ export const researchProjects: Project[] = [
     problem:
       'Physical testbeds expose camera, sensor, timing, and control behavior that simulation cannot capture alone.',
     contributions: [
-      'Integrating sensing and perception workflows for embedded vehicle experiments.',
-      'Maintaining platform-specific evaluation setups.',
+      'Integrating camera, LiDAR, and embedded perception workflows for physical vehicle experiments.',
+      'Maintaining distinct QCar1 and QCar2 configurations for their respective studies.',
     ],
     architecture:
-      'QCar1 supports the described traffic-sign and camera–LiDAR experiments. QCar2 is identified for REDAP and SROS2 studies; their configurations should not be conflated.',
+      'QCar1 supports the traffic-sign and camera–LiDAR experiments. QCar2 is used in the REDAP and SROS2 research contexts.',
     implementation:
-      'Python/C++, Jetson hardware, ROS 2, cameras, LiDAR, YOLO, and sensor interfaces appear in the supplied research context.',
-    resources: 'Approved hardware photographs and diagrams are pending.',
+      'The testbed work spans Python/C++, Jetson hardware, ROS 2, cameras, LiDAR, YOLO, and sensor interfaces.',
   },
   {
     id: 'carla-edge',
@@ -187,8 +180,7 @@ export const researchProjects: Project[] = [
     approach:
       'Use CARLA driving evaluation alongside embedded AI deployment and physical testing where supported.',
     implementation:
-      'The brief identifies CARLA, Jetson, YOLO, and TensorRT across recent research workflows.',
-    resources: 'Project-specific demos and measurements are pending approval.',
+      'Across the described workflows, CARLA supports simulation while Jetson, YOLO, and TensorRT support edge deployment.',
   },
 ]
 
@@ -205,7 +197,7 @@ export const undergraduateProjects: Project[] = [
     problem:
       'Connected devices create network traffic that may contain signs of intrusion.',
     approach:
-      'Explore learning-based intrusion detection; dataset, models, and metrics await verification.',
+      'Explore machine-learning and deep-learning methods for IoT network intrusion detection.',
   },
   {
     id: 'angthas',
@@ -217,7 +209,7 @@ export const undergraduateProjects: Project[] = [
     category: 'Undergraduate project',
     focus: 'Earlier work',
     implementation:
-      'Node.js, Express.js, MongoDB, HTML, CSS, and Bootstrap are identified in the brief. Individual role and feature scope need confirmation.',
+      'Built with Node.js, Express.js, MongoDB, HTML, CSS, and Bootstrap.',
   },
   {
     id: 'recommendation',
@@ -229,7 +221,7 @@ export const undergraduateProjects: Project[] = [
     category: 'Undergraduate project',
     focus: 'Earlier work',
     implementation:
-      'The brief identifies CNN-based methods, Python, and Tkinter; detailed implementation remains to be verified.',
+      'Uses CNN-based methods with a Python and Tkinter interface.',
   },
   {
     id: 'ideation',
@@ -254,8 +246,7 @@ export const undergraduateProjects: Project[] = [
     tags: ['Laravel', 'Oracle', 'SQL'],
     category: 'Undergraduate project',
     focus: 'Earlier work',
-    implementation:
-      'Laravel, Oracle, and SQL are supported by the brief; individual responsibilities await confirmation.',
+    implementation: 'Uses Laravel, Oracle, and SQL.',
   },
 ]
 
@@ -347,7 +338,6 @@ export const publications: Publication[] = [
       '2026 IEEE 2nd International Conference on Secure IoT, Assured and Trusted Computing (SATC)',
     doi: '10.1109/SATC69565.2026.11542547',
     url: 'https://doi.org/10.1109/SATC69565.2026.11542547',
-    note: 'Conference program and DOI corroborate the supplied paper. Page details remain to be checked.',
   },
   {
     id: 'milcom-2025',
@@ -361,7 +351,6 @@ export const publications: Publication[] = [
     venue: '2025 IEEE Military Communications Conference (MILCOM), WS-07',
     doi: '10.1109/MILCOM64451.2025.11309897',
     url: 'https://doi.org/10.1109/MILCOM64451.2025.11309897',
-    note: 'DOI resolves to the IEEE record; pagination and citation formatting remain to be checked.',
   },
   {
     id: 'acmi-2021',
@@ -376,7 +365,6 @@ export const publications: Publication[] = [
       '2021 International Conference on Automation, Control and Mechatronics for Industry 4.0 (ACMI)',
     doi: '10.1109/ACMI53878.2021.9528252',
     url: 'https://doi.org/10.1109/ACMI53878.2021.9528252',
-    note: 'Conference proceedings and supplied paper support this entry; page details remain to be checked.',
   },
   {
     id: 'mecc-2025',
@@ -384,12 +372,11 @@ export const publications: Publication[] = [
       'Investigating Adversarial Image Attacks in a Sensor Fusion Framework Using a Scaled Autonomous Vehicle Testbed',
     year: 2025,
     category: 'Manuscripts / submissions',
-    status: 'Conference preprint; proceedings status to verify',
+    status: 'Conference preprint · proceedings status unverified',
     authors:
       'Tahmid Hasan Sakib, Wesam Al Amiri, Abhijeet Solanki, Syed Rafay Hasan, Terry N. Guo, Syed Ali Asad Rizvi',
     venueContext:
       '2025 IFAC Modeling, Estimation and Control Conference (MECC)',
-    note: 'The supplied copy is headed “Preprints.” A final proceedings record has not been verified.',
   },
   {
     id: 'access-manuscript',
@@ -400,18 +387,15 @@ export const publications: Publication[] = [
     authors:
       'Tahmid Hasan Sakib, Abhijeet Solanki, Wesam Al Amiri, Syed Rafay Hasan, Syed Ali Asad Rizvi, Terry N. Guo',
     venueContext: 'IEEE Access-styled manuscript',
-    note: 'Template year and DOI-looking text in the supplied copy are not publication evidence; no DOI or venue is asserted.',
   },
 ]
 
 export const education = [
   {
     institution: 'Tennessee Technological University',
-    qualification:
-      'M.S. in Electrical and Computer Engineering (provisional wording)',
+    qualification: 'Master’s studies · Electrical and Computer Engineering',
     location: 'Cookeville, Tennessee',
-    period: 'Expected December 2026 (provisional)',
-    note: 'Later resume variants report a 4.00/4.00 GPA. Earlier variants differ on degree wording and completion date; confirm official record.',
+    period: 'Graduate studies',
     description:
       'Graduate research in autonomous vehicle security, embedded perception, and cyber-physical systems.',
   },
@@ -419,8 +403,7 @@ export const education = [
     institution: 'Military Institute of Science and Technology',
     qualification: 'B.S. in Computer Science and Engineering',
     location: 'Dhaka, Bangladesh',
-    period: 'August 2021',
-    note: 'Degree wording and date from the working brief.',
+    period: 'Undergraduate studies',
     description:
       'Computing, machine learning, and software engineering foundations.',
   },
@@ -429,7 +412,7 @@ export const experience = [
   {
     organization: 'Tennessee Technological University',
     role: 'Graduate Research Assistant',
-    period: 'May 2024 — present (per source resumes)',
+    period: null,
     description:
       'Embedded perception, sensor integration, experimental design, validation, and hardware/software troubleshooting.',
   },
@@ -438,30 +421,29 @@ export const experience = [
     role: 'Hardware Engineer Intern',
     period: 'December 2019 — January 2020',
     description:
-      'AVR/Arduino prototyping and hardware/communications simulation and validation; exact responsibilities require confirmation.',
+      'AVR/Arduino prototyping and hardware and communications simulation.',
   },
   {
     organization: 'MIST Computer Club',
     role: 'Treasurer',
     period: null,
-    description: 'Leadership role; dates and activities await confirmation.',
+    description: 'Student organization leadership.',
   },
   {
     organization: 'Human Being Society Forever',
     role: 'Co-founder',
     period: null,
-    description:
-      'Community leadership role; dates and activities await confirmation.',
+    description: 'Community organization leadership.',
   },
 ]
 export const achievements = [
   {
     title: 'Banglalink SDG Hackathon / Code for a Cause',
-    detail: 'Third runner-up, 2018 — wording to confirm.',
+    detail: '2018',
   },
   {
     title: 'SSC and HSC Board Scholarships',
-    detail: 'Award years and official wording to confirm.',
+    detail: 'Academic recognition',
   },
 ]
 export const navigation = [

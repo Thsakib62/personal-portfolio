@@ -204,12 +204,20 @@ export function ProjectDetail() {
           )}
           <section id="media" className="case-section">
             <h2>Images & videos</h2>
-            <p>Approved project media will be added here when available.</p>
+            <p>
+              Research images and videos are not available for this case study.
+            </p>
             <div className="media-grid">
               {(
                 project.media ?? [
-                  { type: 'image' as const, label: 'Project figure pending' },
-                  { type: 'video' as const, label: 'Experiment video pending' },
+                  {
+                    type: 'image' as const,
+                    label: 'Research image unavailable',
+                  },
+                  {
+                    type: 'video' as const,
+                    label: 'Experiment video unavailable',
+                  },
                 ]
               ).map((item) => (
                 <div className="media-placeholder" key={item.label}>

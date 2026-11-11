@@ -61,8 +61,10 @@ test('homepage, theme persistence, responsive navigation and project deep link',
     fullPage: true,
   })
   await page.getByRole('link', { name: 'REDAP', exact: true }).click()
-  await expect(page).toHaveURL('/projects#redap')
-  await expect(page.locator('#redap')).toBeInViewport()
+  await expect(page).toHaveURL('/projects/redap')
+  await expect(
+    page.getByRole('heading', { name: 'Research problem' }),
+  ).toBeVisible()
   expect(errors).toEqual([])
 })
 
@@ -72,6 +74,7 @@ test('all routes load directly without horizontal overflow or inaccessible conte
   for (const [route, title] of [
     ['/research', 'Building trust into autonomy.'],
     ['/projects', 'Ideas, made tangible.'],
+    ['/projects/redap', 'REDAP'],
     ['/experience', 'A foundation for what’s next.'],
     ['/cv', 'The fuller picture.'],
     ['/contact', 'A conversation can start something.'],
@@ -95,6 +98,69 @@ test('all routes load directly without horizontal overflow or inaccessible conte
   await page.goto('/contact')
   await expect(page.getByText('Email & profile links pending')).toBeVisible()
   await expect(page.locator('form')).toHaveCount(0)
+})
+
+test('research search, status filters and citations use supported records', async ({
+  page,
+  context,
+}) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write'])
+  await page.goto('/research')
+  await expect(page.locator('.publication-entry')).toHaveCount(5)
+  await expect(
+    page.getByRole('heading', { name: 'Work in progress' }),
+  ).toBeVisible()
+  await page
+    .getByRole('searchbox', { name: 'Search publications' })
+    .fill('Naturalistic')
+  await expect(page.locator('.publication-entry')).toHaveCount(1)
+  await expect(
+    page.getByText(
+      'Physical Evaluation of Naturalistic Adversarial Patches for Camera-Based Traffic-Sign Detection',
+    ),
+  ).toBeVisible()
+  await page.getByRole('searchbox', { name: 'Search publications' }).fill('')
+  await page.getByLabel('Category').selectOption('Manuscripts / submissions')
+  await expect(page.locator('.publication-entry')).toHaveCount(1)
+  await expect(page.getByRole('button', { name: 'Copy BibTeX' })).toHaveCount(0)
+  await page.getByLabel('Category').selectOption('Published peer-reviewed work')
+  await expect(page.locator('.publication-entry')).toHaveCount(3)
+  await page.getByLabel('Year').selectOption('2021')
+  await expect(page.locator('.publication-entry')).toHaveCount(1)
+  await expect(page.getByRole('button', { name: 'Copy BibTeX' })).toHaveCount(1)
+  await page.getByRole('button', { name: 'Copy BibTeX' }).click()
+  await expect(page.getByRole('status', { name: '' }).last()).toContainText(
+    'BibTeX copied',
+  )
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toContain(
+    '10.1109/ACMI53878.2021.9528252',
+  )
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
+})
+
+test('project filters and case-study navigation stay accessible', async ({
+  page,
+}) => {
+  await page.goto('/projects')
+  await page.getByRole('button', { name: 'Systems security' }).click()
+  await expect(page.getByText('Showing 1 graduate project')).toBeVisible()
+  await page
+    .getByRole('link', { name: 'ROS 2 / SROS2 supply-chain security' })
+    .click()
+  await expect(page).toHaveURL('/projects/ros-security')
+  await expect(
+    page.getByRole('navigation', { name: 'Case study sections' }),
+  ).toBeVisible()
+  await page.getByRole('link', { name: 'Experimental evaluation' }).click()
+  await expect(page.locator('#evaluation')).toBeInViewport()
+  await page
+    .getByRole('link', {
+      name: /Supply Chain Exploitation of Secure ROS 2 Systems/,
+    })
+    .click()
+  await expect(page).toHaveURL('/research#milcom-2025')
+  await expect(page.locator('#milcom-2025')).toBeInViewport()
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
 })
 
 test('keyboard skip link and reduced motion work without persistent storage', async ({

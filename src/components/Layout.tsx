@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react'
-import { navigation, profile } from '../data/portfolio'
+import {
+  navigation,
+  profile,
+  researchProjects,
+  undergraduateProjects,
+} from '../data/portfolio'
 
 export function Layout() {
   const [dark, setDark] = useState(
@@ -25,7 +30,10 @@ export function Layout() {
   }, [dark])
   useEffect(() => {
     const item = navigation.find((item) => item.to === location.pathname)
-    document.title = `${item?.label ?? 'Page not found'} | ${profile.name}`
+    const project = [...researchProjects, ...undergraduateProjects].find(
+      (item) => `/projects/${item.id}` === location.pathname,
+    )
+    document.title = `${project?.title ?? item?.label ?? 'Page not found'} | ${profile.name}`
     if (location.hash) {
       requestAnimationFrame(() =>
         document.getElementById(location.hash.slice(1))?.scrollIntoView(),

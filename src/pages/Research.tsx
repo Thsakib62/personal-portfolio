@@ -112,9 +112,8 @@ export function Research() {
               <p className="eyebrow">02 / Research record</p>
               <h2 id="publications-title">Publications & manuscripts</h2>
               <p className="section-intro">
-                Entries are grouped by status and year. The supplied paper
-                bundle is treated as source material, not proof of final
-                acceptance. Unverified metadata is identified in each entry.
+                Conference publications, a conference preprint, and a manuscript
+                are listed separately by status and year.
               </p>
             </div>
           </div>

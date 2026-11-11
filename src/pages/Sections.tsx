@@ -19,14 +19,14 @@ export function Experience() {
         Research practice, embedded engineering, software foundations, and
         leadership.
       </PageIntro>
-      <SectionHeading eyebrow="Research & industry" title="Experience" />
+      <SectionHeading eyebrow="Graduate research" title="Research experience" />
       <div className="timeline">
-        {experience.map((item) => (
+        {experience.slice(0, 1).map((item) => (
           <article key={item.organization}>
             <BriefcaseBusiness size={23} />
             <div>
               <p className="card-kicker">
-                {item.period ?? 'Dates to be confirmed'}
+                {item.period ?? 'Graduate research'}
               </p>
               <h3>{item.role}</h3>
               <p>{item.organization}</p>
@@ -48,7 +48,6 @@ export function Experience() {
                 <h3>{item.institution}</h3>
                 <p>{item.qualification}</p>
                 <p className="muted">{item.description}</p>
-                <p className="verification-note">{item.note}</p>
               </div>
             </article>
           ))}
@@ -70,10 +69,38 @@ export function Experience() {
         </div>
       </section>
       <section className="inner-section">
-        <SectionHeading
-          eyebrow="Recognition & leadership"
-          title="Achievements"
-        />
+        <SectionHeading eyebrow="Industry experience" title="Internship" />
+        <div className="timeline">
+          {experience.slice(1, 2).map((item) => (
+            <article key={item.organization}>
+              <BriefcaseBusiness size={23} />
+              <div>
+                <p className="card-kicker">{item.period}</p>
+                <h3>{item.role}</h3>
+                <p>{item.organization}</p>
+                <p className="muted">{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="inner-section">
+        <SectionHeading eyebrow="Community" title="Leadership" />
+        <div className="timeline">
+          {experience.slice(2).map((item) => (
+            <article key={item.organization}>
+              <BriefcaseBusiness size={23} />
+              <div>
+                <h3>{item.role}</h3>
+                <p>{item.organization}</p>
+                <p className="muted">{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="inner-section">
+        <SectionHeading eyebrow="Recognition" title="Achievements" />
         <ul className="achievement-list">
           {achievements.map((item) => (
             <li key={item.title}>
@@ -97,7 +124,7 @@ export function CV() {
         {[
           {
             title: 'Academic CV',
-            copy: 'Research experience, education, verified publications, and academic contributions.',
+            copy: 'Research experience, education, publications, and academic contributions.',
           },
           {
             title: 'Industry resume',
@@ -108,10 +135,7 @@ export function CV() {
             <FileText size={32} strokeWidth={1.2} />
             <h2>{item.title}</h2>
             <p>{item.copy}</p>
-            <span className="tag">PDF asset pending</span>
-            <p className="muted small">
-              A download will be available once the final document is supplied.
-            </p>
+            <span className="tag">Not available online</span>
           </article>
         ))}
       </div>
@@ -132,14 +156,8 @@ export function Contact() {
       <div className="contact-panel">
         <Mail size={32} strokeWidth={1.2} />
         <h2>Let’s connect.</h2>
-        <p>
-          Verified contact details and professional profiles will appear here
-          once provided.
-        </p>
-        <span className="tag">Email & profile links pending</span>
-        <p className="muted small">
-          No contact form is active in this foundation release.
-        </p>
+        <p>Direct contact information is not listed on this site.</p>
+        <span className="tag">Contact details unavailable</span>
       </div>
       <Link className="text-link" to="/research">
         Explore my research in the meantime

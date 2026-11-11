@@ -94,8 +94,8 @@ export function Home() {
               <span>THS</span>
             </div>
             <div className="portrait-caption">
-              <span>Portrait placeholder</span>
-              <span>Personal photograph to be added</span>
+              <span>Portrait</span>
+              <span>Image unavailable</span>
             </div>
             <div className="portrait-coordinate">
               RESEARCH × REAL-WORLD SYSTEMS
@@ -130,8 +130,7 @@ export function Home() {
         <div>
           <p className="eyebrow">01 / About me</p>
           <h2>
-            Curiosity, grounded
-            <br />
+            Curiosity, grounded <br />
             in the real world.
           </h2>
         </div>
@@ -227,7 +226,7 @@ export function Home() {
               </p>
               <h3>{item.institution}</h3>
               <p>{item.qualification}</p>
-              <span className="muted">{item.note}</span>
+              <span className="muted">{item.location}</span>
             </article>
           ))}
         </div>
@@ -237,7 +236,7 @@ export function Home() {
             <strong>
               {experience[0].role} · {experience[0].organization}
             </strong>
-            <span>{experience[0].period}</span>
+            <span>Embedded perception · sensor integration · validation</span>
           </p>
         </div>
         <div className="toolbox">

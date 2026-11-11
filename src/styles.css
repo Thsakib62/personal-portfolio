@@ -1810,6 +1810,7 @@ main:focus {
   font-size: clamp(3rem, 6vw, 5.3rem);
   line-height: 1.06;
   margin: 17px 0;
+  overflow-wrap: anywhere;
 }
 .case-hero > p:not(.eyebrow) {
   max-width: 730px;
@@ -2118,6 +2119,9 @@ main:focus {
   }
 }
 @media (max-width: 640px) {
+  .case-hero h1 {
+    font-size: clamp(2.7rem, 6vw, 5.3rem);
+  }
   .research-viewer {
     width: 100vw;
     height: 100dvh;

@@ -8,8 +8,42 @@ export const profile = {
   role: 'Graduate Research Assistant',
   affiliation: 'Tennessee Technological University',
   summary:
-    'I study trustworthy autonomous systems through physical perception experiments, embedded AI, and cyber-physical security.',
+    'I build and evaluate autonomous systems through embedded AI, computer vision, and cyber-physical security research.',
 }
+
+// Proposed document types. No public downloads are available yet.
+export const cvDocumentCategories = [
+  {
+    title: 'Academic Curriculum Vitae',
+    description:
+      'Academic background, research experience, publications, projects, and achievements.',
+  },
+  {
+    title: 'General Engineering Resume',
+    description:
+      'A concise view of professional background and transferable engineering qualifications.',
+  },
+  {
+    title: 'Embedded Systems / Robotics Resume',
+    description:
+      'Embedded software, Linux, ROS 2, NVIDIA Jetson, sensors, integration, and testing.',
+  },
+  {
+    title: 'AI / Machine Learning / Computer Vision Resume',
+    description:
+      'Machine learning, autonomous perception, adversarial robustness, and embedded AI.',
+  },
+  {
+    title: 'Hardware / Electrical Engineering Resume',
+    description:
+      'Electronics, microcontrollers, hardware interfaces, testing, and validation.',
+  },
+  {
+    title: 'Research / Simulation Resume',
+    description:
+      'Research prototyping, CARLA, physical experiments, modeling, and hardware-in-the-loop evaluation.',
+  },
+] as const
 
 export { researchProjects } from './researchProjects'
 
@@ -243,7 +277,7 @@ export const experience = [
     role: 'Graduate Research Assistant',
     period: null,
     description:
-      'Embedded perception, sensor integration, experimental design, validation, and hardware/software troubleshooting.',
+      'Research in autonomous vehicle perception and control, physical adversarial evaluation, runtime monitoring, and ROS 2 security. Work spans camera and LiDAR integration, NVIDIA Jetson deployments, CARLA simulation, and physical system validation.',
   },
   {
     organization: 'Robi Axiata Limited',

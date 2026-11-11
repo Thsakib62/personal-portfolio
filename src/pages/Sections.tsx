@@ -6,7 +6,13 @@ import {
   Mail,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { achievements, education, experience, skills } from '../data/portfolio'
+import {
+  achievements,
+  cvDocumentCategories,
+  education,
+  experience,
+  skills,
+} from '../data/portfolio'
 import { PageIntro, SectionHeading, Tag } from '../components/ui'
 
 export function Experience() {
@@ -35,11 +41,16 @@ export function Experience() {
           </article>
         ))}
       </div>
-      <section className="inner-section">
-        <SectionHeading eyebrow="Academic background" title="Education" />
-        <div className="timeline">
-          {education.map((item) => (
-            <article key={item.institution}>
+      {education.map((item, index) => (
+        <section className="inner-section" key={item.institution}>
+          <SectionHeading
+            eyebrow="Academic background"
+            title={
+              index === 0 ? 'Graduate education' : 'Undergraduate education'
+            }
+          />
+          <div className="timeline">
+            <article>
               <GraduationCap size={24} />
               <div>
                 <p className="card-kicker">
@@ -50,9 +61,9 @@ export function Experience() {
                 <p className="muted">{item.description}</p>
               </div>
             </article>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      ))}
       <section className="inner-section">
         <SectionHeading eyebrow="Technical practice" title="Skills" />
         <div className="skills-grid">
@@ -117,25 +128,16 @@ export function CV() {
   return (
     <div className="container page-content">
       <PageIntro eyebrow="CV / Resume" title="The fuller picture.">
-        Two perspectives on the same work: an academic record and an
-        engineering-focused resume.
+        Academic and role-specific document categories for future downloads.
+        Each version will stay focused on its intended audience.
       </PageIntro>
       <div className="document-grid">
-        {[
-          {
-            title: 'Academic CV',
-            copy: 'Research experience, education, publications, and academic contributions.',
-          },
-          {
-            title: 'Industry resume',
-            copy: 'Engineering experience, technical skills, and selected projects for industry applications.',
-          },
-        ].map((item) => (
+        {cvDocumentCategories.map((item) => (
           <article className="document-card" key={item.title}>
-            <FileText size={32} strokeWidth={1.2} />
+            <FileText size={32} strokeWidth={1.2} aria-hidden="true" />
             <h2>{item.title}</h2>
-            <p>{item.copy}</p>
-            <span className="tag">Not available online</span>
+            <p>{item.description}</p>
+            <span className="tag">In preparation</span>
           </article>
         ))}
       </div>
@@ -154,9 +156,22 @@ export function Contact() {
         exchange about trustworthy autonomous systems.
       </PageIntro>
       <div className="contact-panel">
-        <Mail size={32} strokeWidth={1.2} />
+        <Mail size={32} strokeWidth={1.2} aria-hidden="true" />
         <h2>Let’s connect.</h2>
-        <p>Direct contact information is not listed on this site.</p>
+        <p>
+          Institutional email and verified professional profiles will be listed
+          here when available.
+        </p>
+        <div className="contact-channel-grid">
+          <div>
+            <h3>Direct contact</h3>
+            <p>Institutional email</p>
+          </div>
+          <div>
+            <h3>Professional profiles</h3>
+            <p>GitHub · LinkedIn · Google Scholar</p>
+          </div>
+        </div>
         <span className="tag">Contact details unavailable</span>
       </div>
       <Link className="text-link" to="/research">

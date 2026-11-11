@@ -93,7 +93,7 @@ test('all routes load directly without horizontal overflow or inaccessible conte
     await page.getByRole('button', { name: 'Switch to light theme' }).click()
   }
   await page.goto('/cv')
-  await expect(page.getByText('Not available online')).toHaveCount(2)
+  await expect(page.getByText('In preparation')).toHaveCount(6)
   await expect(page.locator('a[download]')).toHaveCount(0)
   await page.goto('/contact')
   await expect(page.getByText('Contact details unavailable')).toBeVisible()
@@ -271,7 +271,8 @@ test('public pages keep publication status and omit editorial notes', async ({
   await page.goto('/experience')
   for (const heading of [
     'Research experience',
-    'Education',
+    'Graduate education',
+    'Undergraduate education',
     'Skills',
     'Internship',
     'Leadership',

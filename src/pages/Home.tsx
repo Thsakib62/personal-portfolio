@@ -5,7 +5,6 @@ import {
   ArrowUpRight,
   FileText,
   MapPin,
-  UserRound,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import {
@@ -70,10 +69,8 @@ export function Home() {
           <div className="hero-affiliation">
             <span className="affiliation-line" />
             <div>
-              <strong>
-                Graduate researcher · Electrical & Computer Engineering
-              </strong>
-              <span>Tennessee Technological University, USA</span>
+              <strong>{profile.role}</strong>
+              <span>{profile.affiliation}, USA</span>
             </div>
           </div>
         </motion.div>
@@ -82,24 +79,16 @@ export function Home() {
           initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          aria-label="Profile portrait placeholder"
+          aria-label="Professional profile"
         >
           <div className="portrait-frame">
-            <div className="portrait-top">
-              <span>PROFILE / 01</span>
-              <span className="tiny-cross">+</span>
-            </div>
-            <div className="portrait-mark">
-              <UserRound size={72} strokeWidth={0.8} />
-              <span>THS</span>
-            </div>
-            <div className="portrait-caption">
-              <span>Portrait</span>
-              <span>Image unavailable</span>
-            </div>
-            <div className="portrait-coordinate">
-              RESEARCH × REAL-WORLD SYSTEMS
-            </div>
+            <img
+              src="/images/professional-headshot.webp"
+              alt="Professional portrait of Tahmid Hasan Sakib."
+              width="1536"
+              height="1024"
+              fetchPriority="high"
+            />
           </div>
           <div className="profile-note">
             <div className="note-icon">
@@ -121,9 +110,11 @@ export function Home() {
           <span>FOCUSED ON</span>
           <p>Autonomous systems</p>
           <span className="strip-plus">+</span>
-          <p>Trustworthy AI</p>
+          <p>Embedded AI</p>
           <span className="strip-plus">+</span>
-          <p>Real-world engineering</p>
+          <p>Computer vision</p>
+          <span className="strip-plus">+</span>
+          <p>Cyber-physical security</p>
         </div>
       </div>
       <section className="section container about-grid" id="about">
@@ -141,8 +132,8 @@ export function Home() {
           </p>
           <p>
             As a Graduate Research Assistant at Tennessee Technological
-            University, I study adversarial perception, embedded defense,
-            runtime monitoring, and secure robotics through physical and
+            University, I study autonomous vehicle perception, embedded AI,
+            runtime monitoring, and ROS 2 security through physical and
             simulated vehicle experiments.
           </p>
           <Link className="text-link" to="/experience">

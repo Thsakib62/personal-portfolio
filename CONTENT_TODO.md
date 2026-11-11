@@ -36,7 +36,7 @@ This portfolio separates supported facts from provisional wording. Review the su
 - [ ] Resolve resume differences on degree title, completion date, and GPA against the university record. Public copy uses neutral master's studies wording and omits the disputed GPA and date.
 - [ ] Verify Graduate Research Assistant start date; public copy omits the resume-derived May 2024 date.
 - [ ] Confirm the Robi internship responsibilities, leadership activities, and award placement before restoring more detailed claims.
-- [ ] Provide a professional portrait and permission to publish it.
+- [x] Professional portrait supplied and approved for the homepage; the public copy contains no source metadata.
 - [ ] Confirm the official master's degree wording and graduation date. Later resumes say M.S. Electrical and Computer Engineering, expected December 2026; earlier variants say Computer Engineering and July 2026.
 - [ ] Confirm master's GPA, institution/department wording, and advisor/lab names if public.
 - [ ] Confirm undergraduate degree wording and completion date.
@@ -46,8 +46,8 @@ This portfolio separates supported facts from provisional wording. Review the su
 
 ## Links and documents
 
-- [ ] Provide and verify public email, GitHub, LinkedIn, Google Scholar, ORCID, lab/institution profile, and personal domain links as applicable.
-- [ ] Provide final academic CV and role-specific resume PDFs in a later phase; check accessibility and private information before adding downloads.
+- [ ] Provide and verify institutional email, GitHub, LinkedIn, and Google Scholar URLs before making them clickable. Confirm whether an ORCID profile exists and should be listed. Verify lab/institution profile and personal domain links if applicable.
+- [ ] Provide final academic CV, general engineering resume, and role-specific resume PDFs in a later phase; check accessibility and private information before adding downloads. Current document cards describe planned categories only.
 - [ ] Provide approved repository and demo links. There are no guessed URLs in the site.
 - [ ] Set final canonical URL and social preview assets after a domain is selected.
 

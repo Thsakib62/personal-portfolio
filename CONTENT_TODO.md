@@ -10,23 +10,25 @@ This portfolio separates supported facts from provisional wording. Review the su
 - [ ] Recheck the official IEEE records, exact author order, page ranges, and final citation format for SATC 2026, MILCOM 2025, and ACMI 2021. DOI links are present, but publication details may change.
 - [ ] Confirm whether the MECC 2025 preprint has a final proceedings citation, permanent link, and peer-reviewed publication status.
 - [ ] Confirm the IEEE Access-styled manuscript's submission and publication status. Its template DOI and footer year must not be used as citation evidence.
-- [ ] Confirm any additional manuscripts, thesis, preprints, or work in progress and obtain approved references. REDAP and PULSE are projects, with no inferred publication mapping.
+- [ ] Confirm a public citation and current review status for the PULSE and REDAP manuscripts before adding formal publication entries. The local thesis record describes both as under review; their manuscripts remain private.
 - [ ] Add page ranges, volume/issue where applicable, and publisher-exported BibTeX if the generated minimal citations need replacement.
 - [ ] Review copyright and permissions before linking to or hosting papers, slides, posters, or manuscript PDFs.
 
 ## Research projects and media
 
-- [ ] Confirm REDAP deployment and QCar2/CARLA evaluation protocols and outcomes before adding performance claims or a publication mapping.
-- [ ] Confirm PULSE signals, fallback behavior, and any publication or demonstration relationship before adding results.
-- [ ] Confirm QCar1 physical traffic-sign trial details and any quantitative effects before quoting numbers; retain the manuscript's limited experimental context for qualitative findings.
-- [ ] Confirm LAPSE benchmarking protocols and root-cause findings before publishing outcomes.
-- [ ] Verify individual contributions and scope for QCar1/QCar2 platform integration and CARLA/Jetson workflows before expanding case studies.
+- [ ] Obtain the LAPSE project source, protocol, contribution record, and verified findings. Its current brief entry establishes no platform, benchmark, metric, or publication claim.
+- [ ] Review the SATC naturalistic-patch paper and project evidence before adding an individual role, apparatus details, or physical metrics. The current case study states coauthorship only.
+- [ ] Resolve the IEEE Access fine-tuning-design and dataset-count differences between manuscript and archived artifacts before adding those details publicly. The physical pre/post comparison also changed base throttle and NMS confidence.
+- [ ] Resolve whether the Chapter 4 collision descriptions have independently preserved physical evidence. Keep collision, QCar2 LiDAR spoofing, attack rates, and mitigation efficacy out of public claims until supported.
+- [ ] Verify the source-panel mapping for REDAP restoration figures before publishing a before/after image. Keep submitted offline E1, later E3, and later E4 evidence separate.
+- [ ] Confirm exact current publication status for the IEEE Access manuscript through an authoritative public record; the local thesis record says its third revision was resubmitted.
+- [ ] Verify individual contributions to each QCar1/QCar2 platform configuration before replacing collaborative system descriptions with sole-author claims.
 - [ ] Verify datasets, models, metrics, implementation details, roles, and feature scope for the undergraduate projects before adding specifics.
 - [ ] Confirm individual contributions, collaborators, dates, experimental protocols, limitations, and public outcomes for each graduate case study.
 - [ ] Supply approved QCar1 and QCar2 photographs with captions and alt text; identify which setup appears in each image.
 - [ ] Supply approved REDAP, PULSE, LAPSE, ROS 2, CARLA, and sensor-system diagrams or figures with meaningful alt text.
 - [ ] Supply experiment demonstration videos with captions/transcripts and permission to publish.
-- [ ] Supply validated quantitative results and their evaluation context; no metrics are currently asserted.
+- [ ] Review the approved case-study metrics with collaborators before public deployment; their run/frame/encounter units and evidence limits are recorded in the thesis evidence matrix and repository audits.
 - [ ] Confirm that ROS 2/SROS2 details, research diagrams, and manuscripts are safe for public disclosure.
 
 ## Profile, education, experience, and achievements

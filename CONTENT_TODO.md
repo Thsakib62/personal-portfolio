@@ -6,11 +6,10 @@ This portfolio separates supported facts from provisional wording. Review the su
 
 - [ ] Check SATC 2026, MILCOM 2025, and ACMI 2021 page details, pagination, and final citation formatting against publisher records. These editorial checks were removed from public publication notes.
 - [ ] Keep the MECC 2025 contribution tied to its documented conference preprint context until an authoritative proceedings record establishes final publication status; do not infer a journal publication.
-- [ ] Keep the IEEE Access-styled paper labeled manuscript status unverified; its template year and DOI-like text are not evidence of publication.
+- [ ] Verify final IEEE Access publisher metadata and update the public listing after confirming the owner-reported acceptance; do not use template year or DOI text as citation evidence.
 - [ ] Recheck the official IEEE records, exact author order, page ranges, and final citation format for SATC 2026, MILCOM 2025, and ACMI 2021. DOI links are present, but publication details may change.
 - [ ] Confirm whether the MECC 2025 preprint has a final proceedings citation, permanent link, and peer-reviewed publication status.
-- [ ] Confirm the IEEE Access-styled manuscript's submission and publication status. Its template DOI and footer year must not be used as citation evidence.
-- [ ] Confirm a public citation and current review status for the PULSE and REDAP manuscripts before adding formal publication entries. The local thesis record describes both as under review; their manuscripts remain private.
+- [ ] Confirm REDAP full CVPR 2027 submission before any public "submitted" or "under review" label. PULSE is owner-reported under review at VTC 2027-Spring; obtain a public citation before adding a formal publication entry. Both manuscripts remain private.
 - [ ] Add page ranges, volume/issue where applicable, and publisher-exported BibTeX if the generated minimal citations need replacement.
 - [ ] Review copyright and permissions before linking to or hosting papers, slides, posters, or manuscript PDFs.
 
@@ -21,7 +20,6 @@ This portfolio separates supported facts from provisional wording. Review the su
 - [ ] Resolve the IEEE Access fine-tuning-design and dataset-count differences between manuscript and archived artifacts before adding those details publicly. The physical pre/post comparison also changed base throttle and NMS confidence.
 - [ ] Resolve whether the Chapter 4 collision descriptions have independently preserved physical evidence. Keep collision, QCar2 LiDAR spoofing, attack rates, and mitigation efficacy out of public claims until supported.
 - [ ] Verify the source-panel mapping for REDAP restoration figures before publishing a before/after image. Keep submitted offline E1, later E3, and later E4 evidence separate.
-- [ ] Confirm exact current publication status for the IEEE Access manuscript through an authoritative public record; the local thesis record says its third revision was resubmitted.
 - [ ] Verify individual contributions to each QCar1/QCar2 platform configuration before replacing collaborative system descriptions with sole-author claims.
 - [ ] Verify datasets, models, metrics, implementation details, roles, and feature scope for the undergraduate projects before adding specifics.
 - [ ] Confirm individual contributions, collaborators, dates, experimental protocols, limitations, and public outcomes for each graduate case study.
@@ -46,8 +44,9 @@ This portfolio separates supported facts from provisional wording. Review the su
 
 ## Links and documents
 
-- [ ] Provide and verify institutional email, GitHub, LinkedIn, and Google Scholar URLs before making them clickable. Confirm whether an ORCID profile exists and should be listed. Verify lab/institution profile and personal domain links if applicable.
-- [ ] Provide final academic CV, general engineering resume, and role-specific resume PDFs in a later phase; check accessibility and private information before adding downloads. Current document cards describe planned categories only.
+- [x] Owner supplied and authorized institutional email, GitHub, LinkedIn, Google Scholar, ORCID, and Kaggle links. The Contact page uses these exact details.
+- [ ] Review and approve private academic CV and resume drafts before any public PDF downloads. Specialized resume documents have not yet been created; all six public document categories remain in preparation.
+- [ ] Verify any future lab/institution profile or personal domain link before adding it.
 - [ ] Provide approved repository and demo links. There are no guessed URLs in the site.
 - [ ] Set final canonical URL and social preview assets after a domain is selected.
 

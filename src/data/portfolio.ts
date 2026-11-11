@@ -11,6 +11,58 @@ export const profile = {
     'I build and evaluate autonomous systems through embedded AI, computer vision, and cyber-physical security research.',
 }
 
+export type ProfessionalProfileKind =
+  'network' | 'code' | 'research' | 'identity' | 'data'
+
+export interface ProfessionalProfileLink {
+  id: 'linkedin' | 'github' | 'scholar' | 'orcid' | 'kaggle'
+  label: string
+  url: string
+  kind: ProfessionalProfileKind
+  description: string
+}
+
+export const professionalContact = {
+  email: 'tsakib42@tntech.edu',
+  profiles: [
+    {
+      id: 'linkedin',
+      label: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/tahmid-hasan-sakib/',
+      kind: 'network',
+      description: 'Professional background and connections',
+    },
+    {
+      id: 'github',
+      label: 'GitHub',
+      url: 'https://github.com/Thsakib62',
+      kind: 'code',
+      description: 'Software projects and repositories',
+    },
+    {
+      id: 'scholar',
+      label: 'Google Scholar',
+      url: 'https://scholar.google.com/citations?user=fS4QJCgAAAAJ',
+      kind: 'research',
+      description: 'Research publications and citations',
+    },
+    {
+      id: 'orcid',
+      label: 'ORCID',
+      url: 'https://orcid.org/0009-0000-0797-6813',
+      kind: 'identity',
+      description: 'Researcher identifier and record',
+    },
+    {
+      id: 'kaggle',
+      label: 'Kaggle',
+      url: 'https://www.kaggle.com/tahmidhasansakib',
+      kind: 'data',
+      description: 'Machine learning notebooks and projects',
+    },
+  ] satisfies ProfessionalProfileLink[],
+}
+
 // Proposed document types. No public downloads are available yet.
 export const cvDocumentCategories = [
   {

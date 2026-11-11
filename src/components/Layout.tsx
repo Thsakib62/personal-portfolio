@@ -4,6 +4,7 @@ import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react'
 import {
   navigation,
   profile,
+  professionalContact,
   researchProjects,
   undergraduateProjects,
 } from '../data/portfolio'
@@ -127,6 +128,12 @@ export function Layout() {
             <span>.</span>
           </Link>
           <p>Research with purpose. Engineering with care.</p>
+          <a
+            className="footer-email"
+            href={`mailto:${professionalContact.email}`}
+          >
+            {professionalContact.email}
+          </a>
         </div>
         <div className="footer-right">
           <nav aria-label="Footer navigation">
@@ -136,6 +143,23 @@ export function Layout() {
               Contact
               <ArrowUpRight size={14} />
             </Link>
+          </nav>
+          <nav className="footer-profiles" aria-label="Professional profiles">
+            {professionalContact.profiles
+              .filter((item) =>
+                ['github', 'linkedin', 'scholar'].includes(item.id),
+              )
+              .map((item) => (
+                <a
+                  href={item.url}
+                  key={item.id}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${item.label} (opens in a new tab)`}
+                >
+                  {item.label}
+                </a>
+              ))}
           </nav>
           <p>© {new Date().getFullYear()} Tahmid Hasan Sakib</p>
         </div>

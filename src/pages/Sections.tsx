@@ -1,6 +1,5 @@
 import {
   ArrowUpRight,
-  FileText,
   GraduationCap,
   BriefcaseBusiness,
   Mail,
@@ -15,6 +14,7 @@ import {
   skills,
 } from '../data/portfolio'
 import { PageIntro, SectionHeading, Tag } from '../components/ui'
+import { DocumentCard } from '../components/DocumentCard'
 
 export function Experience() {
   return (
@@ -134,12 +134,7 @@ export function CV() {
       </PageIntro>
       <div className="document-grid">
         {cvDocumentCategories.map((item) => (
-          <article className="document-card" key={item.title}>
-            <FileText size={32} strokeWidth={1.2} aria-hidden="true" />
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-            <span className="tag">In preparation</span>
-          </article>
+          <DocumentCard document={item} key={item.title} />
         ))}
       </div>
       <Link className="text-link" to="/experience">

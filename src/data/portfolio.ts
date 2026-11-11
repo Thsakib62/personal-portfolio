@@ -1,5 +1,5 @@
-import type { Project, Publication } from './models'
-export type { Project, Publication } from './models'
+import type { CvDocument, Project, Publication } from './models'
+export type { CvDocument, Project, Publication } from './models'
 
 // Source: owner-provided portfolio brief (working draft) and the supplied paper bundle.
 // Publication labels are deliberately conservative; the bundle alone does not establish acceptance.
@@ -64,38 +64,50 @@ export const professionalContact = {
 }
 
 // Proposed document types. No public downloads are available yet.
-export const cvDocumentCategories = [
+export const cvDocumentCategories: CvDocument[] = [
   {
+    state: 'preparation',
     title: 'Academic Curriculum Vitae',
     description:
       'Academic background, research experience, publications, projects, and achievements.',
+    statusLabel: 'In preparation',
   },
   {
+    state: 'preparation',
     title: 'General Engineering Resume',
     description:
       'A concise view of professional background and transferable engineering qualifications.',
+    statusLabel: 'In preparation',
   },
   {
+    state: 'preparation',
     title: 'Embedded Systems / Robotics Resume',
     description:
       'Embedded software, Linux, ROS 2, NVIDIA Jetson, sensors, integration, and testing.',
+    statusLabel: 'In preparation',
   },
   {
+    state: 'preparation',
     title: 'AI / Machine Learning / Computer Vision Resume',
     description:
       'Machine learning, autonomous perception, adversarial robustness, and embedded AI.',
+    statusLabel: 'In preparation',
   },
   {
+    state: 'preparation',
     title: 'Hardware / Electrical Engineering Resume',
     description:
       'Electronics, microcontrollers, hardware interfaces, testing, and validation.',
+    statusLabel: 'In preparation',
   },
   {
+    state: 'preparation',
     title: 'Research / Simulation Resume',
     description:
       'Research prototyping, CARLA, physical experiments, modeling, and hardware-in-the-loop evaluation.',
+    statusLabel: 'In preparation',
   },
-] as const
+]
 
 export { researchProjects } from './researchProjects'
 

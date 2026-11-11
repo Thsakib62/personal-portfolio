@@ -1,8 +1,8 @@
 import type { Project } from './models'
 
-// Public-facing summaries of collaborative research. No private source paths or
-// research media belong in the site bundle. Claims were checked against the
-// thesis chapters and repository audits before this content update.
+// Public-facing summaries of collaborative research. Only approved media URLs
+// appear here; private source paths and held figures remain outside the site.
+// Claims were checked against the thesis chapters and repository audits.
 export const researchProjects: Project[] = [
   {
     id: 'redap',
@@ -15,6 +15,18 @@ export const researchProjects: Project[] = [
     focus: 'Perception security',
     featured: true,
     visual: 'restoration',
+    cardImage: '/research/redap-qcar2-setup.png',
+    figures: [
+      {
+        section: 'evaluation',
+        heading: 'Physical experimental setup',
+        src: '/research/redap-qcar2-setup.png',
+        caption:
+          'Physical QCar2 and Intel RealSense D435i setup facing a patched stop sign used for REDAP image capture.',
+        alt: 'Annotated overhead photograph showing a Quanser QCar2, RealSense D435i depth camera, and patched stop sign.',
+        note: 'This shows physical image capture. The initial 151-frame REDAP analysis processed stored frames offline; nominal patch coverage was not independently measured in every archived run.',
+      },
+    ],
     caseStudy: {
       problem:
         'A patch can hide the visual structure that a traffic-sign detector needs. A useful defense must restore enough task-relevant information to recover detection while respecting embedded compute limits.',
@@ -76,6 +88,26 @@ export const researchProjects: Project[] = [
     focus: 'Perception security',
     featured: true,
     visual: 'monitoring',
+    figures: [
+      {
+        section: 'architecture',
+        heading: 'Monitoring architecture',
+        src: '/research/pulse-methodology.png',
+        caption:
+          'General PULSE method: clean-run calibration establishes detector behavior envelopes, and online sequential evidence can trigger an anomaly flag and conservative response. The documented live physical QCar2 configuration used the range model.',
+        alt: 'PULSE architecture showing clean-only calibration, detector evidence, range and whole-run monitor variants, normalized anomaly scoring, flagging, and response.',
+        note: 'The diagram includes both QCar2 and CARLA examples and multiple analysis variants; it does not mean all variants ran together on the physical vehicle.',
+      },
+      {
+        section: 'evaluation',
+        heading: 'Physical experimental setup',
+        src: '/research/pulse-qcar2-route-setup.png',
+        caption:
+          'Illustrated physical QCar2 route for the naturalistic adversarial patch condition. Stops 1 and 2 used patched signs; stop 3 served as a clean control. Other patch conditions were evaluated separately.',
+        alt: 'QCar2 route schematic showing naturalistic adversarial patches on the first two stop signs, a clean third stop sign, and a RealSense camera inset.',
+        note: 'This route schematic depicts the NAP condition. The black and white patch runs used their own sign appearances.',
+      },
+    ],
     caseStudy: {
       problem:
         'A fixed missed-detection rule can behave differently across detectors: normal detections may be intermittent, while some patched signs still produce confident hits. A runtime warning should reflect the detector’s clean behavior.',
@@ -136,6 +168,34 @@ export const researchProjects: Project[] = [
     category: 'Graduate research',
     focus: 'Perception security',
     visual: 'vehicle',
+    figures: [
+      {
+        section: 'architecture',
+        heading: 'Camera–LiDAR system flow',
+        src: '/research/qcar1-system-architecture.png',
+        caption:
+          'QCar1 camera and LiDAR detections are fused for online navigation after a calibration phase.',
+        alt: 'Diagram showing QCar1 camera and LiDAR inputs feeding detection and fusion, followed by online decision-making and vehicle control.',
+        note: 'This is a system flowchart, not a detailed real-time scheduling diagram.',
+      },
+      {
+        section: 'evaluation',
+        heading: 'Three-stop physical route',
+        src: '/research/qcar1-three-stop-route.jpg',
+        caption:
+          'Schematic of the QCar1 three-stop physical route with two programmed left turns. Navigation did not require preloaded stop-sign waypoints.',
+        alt: 'Schematic showing a vehicle moving toward three sequential stop signs and making two left turns.',
+      },
+      {
+        section: 'findings',
+        heading: 'Clean baseline stopping distances',
+        src: '/research/qcar1-baseline-stopping-distribution.png',
+        caption:
+          'Final stopping-distance distributions at three signs across 30 clean QCar1 runs. The orange horizontal line represents the calibrated 0.8 m stopping criterion; triangular markers show group means.',
+        alt: 'Box plots of final stopping distances at three sequential stop signs over 30 clean experimental runs, with a horizontal 0.8-meter criterion.',
+        note: 'These distributions describe clean baseline runs, not adversarial mitigation outcomes.',
+      },
+    ],
     caseStudy: {
       problem:
         'Image-only attack tests cannot show how missed or delayed traffic-sign observations affect a vehicle that must fuse range, decide when to stop, and complete a route.',

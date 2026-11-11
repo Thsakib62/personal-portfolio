@@ -6,8 +6,9 @@ import {
   researchProjects,
   undergraduateProjects,
 } from '../data/portfolio'
-import type { EvidenceMetric } from '../data/models'
+import type { EvidenceMetric, ResearchFigureData } from '../data/models'
 import { PageIntro, ProjectCard, SectionHeading, Tag } from '../components/ui'
+import { ResearchFigure } from '../components/ResearchFigure'
 
 const allProjects = [...researchProjects, ...undergraduateProjects]
 const filters = [
@@ -83,6 +84,7 @@ interface CaseSectionData {
   paragraphs?: string[]
   items?: string[]
   metrics?: EvidenceMetric[]
+  figures?: ResearchFigureData[]
 }
 
 function DetailSection({
@@ -91,6 +93,7 @@ function DetailSection({
   paragraphs,
   items,
   metrics,
+  figures,
 }: CaseSectionData) {
   return (
     <section id={id} className="case-section">
@@ -106,6 +109,9 @@ function DetailSection({
         </ul>
       )}
       {metrics && <EvidenceHighlights metrics={metrics} />}
+      {figures?.map((figure) => (
+        <ResearchFigure figure={figure} key={figure.src} />
+      ))}
     </section>
   )
 }
@@ -147,6 +153,7 @@ export function ProjectDetail() {
   const index = allProjects.indexOf(project)
   const next = allProjects[index + 1]
   const study = project.caseStudy
+  const hasFigures = Boolean(project.figures?.length)
   const sections: CaseSectionData[] = study
     ? [
         {
@@ -163,17 +170,26 @@ export function ProjectDetail() {
           id: 'architecture',
           title: 'System architecture & implementation',
           paragraphs: study.architecture,
+          figures: project.figures?.filter(
+            (figure) => figure.section === 'architecture',
+          ),
         },
         {
           id: 'evaluation',
           title: 'Experimental methodology',
           paragraphs: study.methodology,
+          figures: project.figures?.filter(
+            (figure) => figure.section === 'evaluation',
+          ),
         },
         {
           id: 'findings',
           title: 'Selected evidence-backed results',
           paragraphs: study.results,
           metrics: study.metrics,
+          figures: project.figures?.filter(
+            (figure) => figure.section === 'findings',
+          ),
         },
         {
           id: 'limitations',
@@ -261,7 +277,9 @@ export function ProjectDetail() {
           {(project.resources || project.publicationIds?.length) && (
             <a href="#resources">Related publication & status</a>
           )}
-          <a href="#media">Reserved media</a>
+          <a href="#media">
+            {hasFigures ? 'Additional media' : 'Reserved media'}
+          </a>
         </nav>
         <div className="case-content">
           <section id="overview" className="case-section">
@@ -295,14 +313,23 @@ export function ProjectDetail() {
             </section>
           )}
           <section id="media" className="case-section">
-            <h2>Reserved media</h2>
-            <p>
-              Photographs, figures, and videos will appear here after
-              asset-specific permission and accuracy review.
-            </p>
+            <h2>{hasFigures ? 'Additional media' : 'Reserved media'}</h2>
+            {hasFigures ? (
+              <p>
+                The reviewed figures appear beside their research context above.
+                Demonstration videos remain reserved for separate review.
+              </p>
+            ) : (
+              <p>
+                Photographs, figures, and videos will appear here after
+                asset-specific permission and accuracy review.
+              </p>
+            )}
             <div className="media-grid">
               {(
-                project.media ?? [
+                (hasFigures
+                  ? project.media?.filter((item) => item.type !== 'image')
+                  : project.media) ?? [
                   {
                     type: 'image' as const,
                     label: 'Research image unavailable',

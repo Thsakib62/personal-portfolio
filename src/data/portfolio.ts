@@ -1,8 +1,8 @@
 import type { CvDocument, Project, Publication } from './models'
 export type { CvDocument, Project, Publication } from './models'
 
-// Source: owner-provided portfolio brief (working draft) and the supplied paper bundle.
-// Publication labels are deliberately conservative; the bundle alone does not establish acceptance.
+// Public content combines owner-confirmed professional facts with source-checked
+// research descriptions. Publisher metadata is used only where verified.
 export const profile = {
   name: 'Tahmid Hasan Sakib',
   role: 'Graduate Research Assistant',
@@ -111,49 +111,63 @@ export const cvDocumentCategories: CvDocument[] = [
 
 export { researchProjects } from './researchProjects'
 
-export const undergraduateProjects: Project[] = [
+export const earlierProjects: Project[] = [
   {
     id: 'iot',
-    title: 'IoT network intrusion detection',
-    subtitle: 'ML and DL for connected-device security',
+    title: 'Network intrusion detection for IoT devices',
+    subtitle: 'Independent ML and cybersecurity project',
     description:
-      'An undergraduate investigation of machine learning and deep learning for IoT network intrusion detection.',
-    tags: ['Machine learning', 'Deep learning', 'IoT'],
-    category: 'Undergraduate project',
+      'An independent post-undergraduate project exploring machine learning and neural networks for CICIoT2023 traffic classification.',
+    tags: ['Python', 'Machine learning', 'IoT security'],
+    category: 'Independent project',
     focus: 'Earlier work',
     problem:
-      'Connected devices create network traffic that may contain signs of intrusion.',
+      'Classify connected-device network traffic across binary and multiclass intrusion-detection tasks.',
     approach:
-      'Explore machine-learning and deep-learning methods for IoT network intrusion detection.',
+      'The repository documents preprocessing and feature selection for binary, 8-class, and 34-class CICIoT2023 tasks, with ten conventional machine-learning model families and ANN, LSTM, and GRU experiments.',
+    resources:
+      'Repository notebooks include code and saved outputs. Numerical performance is withheld pending evaluation-method review.',
+    sourceLinks: [
+      {
+        label: 'IoT intrusion-detection repository',
+        url: 'https://github.com/Thsakib62/IoT-IDS-with-ML-and-DL',
+      },
+    ],
   },
   {
     id: 'angthas',
     title: 'ANGTHAS',
     subtitle: 'Telemedicine platform',
     description:
-      'A web-based telemedicine platform developed with Node.js, Express.js, MongoDB, HTML, CSS, and Bootstrap.',
+      'Undergraduate-era telemedicine application code with patient and doctor routes, appointment structures, and messaging components.',
     tags: ['Node.js', 'Express.js', 'MongoDB', 'Bootstrap'],
     category: 'Undergraduate project',
     focus: 'Earlier work',
     implementation:
-      'Built with Node.js, Express.js, MongoDB, HTML, CSS, and Bootstrap.',
+      'The repository contains an Express/Mongoose application with HTML, CSS, and Bootstrap. End-to-end feature completeness and deployment have not been established.',
   },
   {
     id: 'recommendation',
     title: 'Visual product recommendation',
     subtitle: 'Computer vision for product discovery',
     description:
-      'An undergraduate visual recommendation project using CNN-based methods and a Python/Tkinter interface.',
-    tags: ['CNN', 'Python', 'Tkinter'],
-    category: 'Undergraduate project',
+      'Python-based visual product recommendation project exploring similar-looking retail items.',
+    tags: ['Computer vision', 'Python', 'Recommendation'],
+    category: 'Earlier project',
     focus: 'Earlier work',
-    implementation:
-      'Uses CNN-based methods with a Python and Tkinter interface.',
+    approach:
+      'The historical project description identifies CNN-based image recommendation; notebook implementation and evaluation details remain unverified.',
+    sourceLinks: [
+      {
+        label: 'Visual recommendation notebook',
+        url: 'https://www.kaggle.com/tahmidhasansakib/visual-product-recommendation-system-using-cnn',
+      },
+    ],
   },
   {
     id: 'ideation',
-    title: 'Suicidal tweet analysis',
-    subtitle: 'Ensemble learning for text analysis',
+    title: 'Suicidal tweet analysis (ACMI 2021)',
+    subtitle: 'Published ensemble-learning research',
     description:
       'Undergraduate research applying ensemble machine learning to the analysis of suicidal ideation in tweets.',
     tags: ['Ensemble learning', 'Text analysis'],
@@ -169,11 +183,36 @@ export const undergraduateProjects: Project[] = [
     title: 'Metro Rail Management System',
     subtitle: 'Database-backed transit software',
     description:
-      'An undergraduate management system using Laravel, Oracle, and SQL.',
+      'Undergraduate-era rail-management database project with schema, SQL queries, sample data, and a project report.',
     tags: ['Laravel', 'Oracle', 'SQL'],
     category: 'Undergraduate project',
     focus: 'Earlier work',
-    implementation: 'Uses Laravel, Oracle, and SQL.',
+    implementation:
+      'Repository materials document Oracle SQL and ER/schema work. A deployed Laravel application has not been verified.',
+    sourceLinks: [
+      {
+        label: 'Metro Rail project repository',
+        url: 'https://github.com/Thsakib62/MetroRail-Management-System',
+      },
+    ],
+  },
+  {
+    id: 'tweet-classification',
+    title: 'Suicidal ideation tweet classification',
+    subtitle: 'Earlier machine-learning exploration',
+    description:
+      'A Kaggle-listed machine-learning project for tweet classification. No performance or clinical outcome is asserted.',
+    tags: ['Machine learning', 'Text classification'],
+    category: 'Earlier project',
+    focus: 'Earlier work',
+    problem:
+      'Explore machine-learning classification of tweets about suicidal ideation.',
+    sourceLinks: [
+      {
+        label: 'Tweet-classification notebook',
+        url: 'https://www.kaggle.com/tahmidhasansakib/suicidal-ideation-prediction-from-twitter',
+      },
+    ],
   },
 ]
 
@@ -257,7 +296,7 @@ export const publications: Publication[] = [
     title:
       'Physical Evaluation of Naturalistic Adversarial Patches for Camera-Based Traffic-Sign Detection',
     year: 2026,
-    category: 'Published peer-reviewed work',
+    category: 'Published conference papers',
     status: 'Conference paper',
     authors:
       'Brianna D’Urso, Tahmid Hasan Sakib, Syed Rafay Hasan, Terry N. Guo',
@@ -271,7 +310,7 @@ export const publications: Publication[] = [
     title:
       'Supply Chain Exploitation of Secure ROS 2 Systems: A Proof-of-Concept on Autonomous Platform Compromise via Keystore Exfiltration',
     year: 2025,
-    category: 'Published peer-reviewed work',
+    category: 'Published conference papers',
     status: 'Conference workshop paper',
     authors:
       'Tahmid Hasan Sakib, Yago Romano Martinez, Carter Brady, Syed Rafay Hasan, Terry N. Guo',
@@ -284,7 +323,7 @@ export const publications: Publication[] = [
     title:
       'Analysis of Suicidal Tweets from Twitter Using Ensemble Machine Learning Methods',
     year: 2021,
-    category: 'Published peer-reviewed work',
+    category: 'Published conference papers',
     status: 'Conference paper',
     authors:
       'Tahmid Hasan Sakib, Md. Ishak, Farzana Faruk Jhumu, Md. Ameer Ali',
@@ -298,79 +337,130 @@ export const publications: Publication[] = [
     title:
       'Investigating Adversarial Image Attacks in a Sensor Fusion Framework Using a Scaled Autonomous Vehicle Testbed',
     year: 2025,
-    category: 'Manuscripts / submissions',
-    status: 'Conference preprint · proceedings status unverified',
+    category: 'Conference extended abstract / poster',
+    status:
+      'Extended abstract and poster; personally presented at MECC 2025 in Pittsburgh, October 5–8, 2025.',
     authors:
       'Tahmid Hasan Sakib, Wesam Al Amiri, Abhijeet Solanki, Syed Rafay Hasan, Terry N. Guo, Syed Ali Asad Rizvi',
     venueContext:
       '2025 IFAC Modeling, Estimation and Control Conference (MECC)',
+    doi: '10.5281/zenodo.17497276',
+    url: 'https://zenodo.org/records/17497276',
+    urlLabel: 'Zenodo record',
+    note: 'DOI: 10.5281/zenodo.17497276',
   },
   {
     id: 'access-manuscript',
     title:
       'Vulnerability Assessment of Adversarial Image Attacks in a Miniaturized Autonomous Vehicle Testbed without Relying on Way-Point Information',
-    category: 'Status pending verification',
-    status: 'Manuscript status unverified',
+    year: 2026,
+    category: 'Accepted journal article',
+    status: 'Accepted for publication in IEEE Access, 2026',
     authors:
       'Tahmid Hasan Sakib, Abhijeet Solanki, Wesam Al Amiri, Syed Rafay Hasan, Syed Ali Asad Rizvi, Terry N. Guo',
-    venueContext: 'IEEE Access-styled manuscript',
+    venueContext: 'IEEE Access',
+  },
+  {
+    id: 'pulse-manuscript',
+    title:
+      'PULSE: Real-Time Flagging of Patch-Induced Stop-Sign Misses in Autonomous Vehicles',
+    year: 2027,
+    category: 'Manuscript under review',
+    status: 'Submitted and under review, IEEE VTC 2027-Spring',
+    authors:
+      'Tahmid Hasan Sakib, Abhijeet Solanki, Syed Rafay Hasan, Terry Guo, Syed Ali Asad Rizvi',
+    venueContext: 'IEEE Vehicular Technology Conference (VTC 2027-Spring)',
+  },
+  {
+    id: 'redap-manuscript',
+    title:
+      'REDAP: Real-Time Edge Defense Against Patch Attacks in Autonomous Driving',
+    year: 2027,
+    category: 'Registered / in preparation',
+    status: 'CVPR 2027 registered; full submission pending',
+    authors:
+      'Abhijeet Solanki, Tahmid Hasan Sakib, Syed Rafay Hasan, Terry Guo, Syed Ali Asad Rizvi',
+    venueContext:
+      'IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2027)',
   },
 ]
 
 export const education = [
   {
     institution: 'Tennessee Technological University',
-    qualification: 'Master’s studies · Electrical and Computer Engineering',
+    qualification: 'Master of Science in Electrical and Computer Engineering',
     location: 'Cookeville, Tennessee',
-    period: 'Graduate studies',
+    period: 'Expected December 2026',
     description:
-      'Graduate research in autonomous vehicle security, embedded perception, and cyber-physical systems.',
+      'Master’s thesis successfully defended; official degree conferral pending. GPA: 4.00/4.00.',
   },
   {
     institution: 'Military Institute of Science and Technology',
-    qualification: 'B.S. in Computer Science and Engineering',
+    qualification: 'Bachelor of Science in Computer Science and Engineering',
     location: 'Dhaka, Bangladesh',
-    period: 'Undergraduate studies',
-    description:
-      'Computing, machine learning, and software engineering foundations.',
+    period: 'August 2021',
+    description: 'Graduated August 2021.',
   },
 ]
 export const experience = [
   {
     organization: 'Tennessee Technological University',
     role: 'Graduate Research Assistant',
-    period: null,
+    period: 'May 2024 – Present',
+    location: 'Cookeville, Tennessee',
     description:
-      'Research in autonomous vehicle perception and control, physical adversarial evaluation, runtime monitoring, and ROS 2 security. Work spans camera and LiDAR integration, NVIDIA Jetson deployments, CARLA simulation, and physical system validation.',
+      'Collaborative research on embedded vehicle perception, camera and LiDAR sensing, NVIDIA Jetson testbeds, physical adversarial evaluation, ROS 2/SROS2 security, CARLA simulation, runtime monitoring, and image restoration. QCar1 and QCar2 studies use distinct configurations and evaluation methods.',
   },
   {
     organization: 'Robi Axiata Limited',
     role: 'Hardware Engineer Intern',
     period: 'December 2019 — January 2020',
+    location: 'Dhaka, Bangladesh',
     description:
-      'AVR/Arduino prototyping and hardware and communications simulation.',
+      'AVR/Arduino prototyping and hardware and communication simulation using MATLAB, LTspice, and Cisco Packet Tracer.',
   },
   {
     organization: 'MIST Computer Club',
     role: 'Treasurer',
-    period: null,
+    period: '2020',
+    location: null,
     description: 'Student organization leadership.',
+  },
+  {
+    organization: 'National Collegiate Programming Contest (NCPC)',
+    role: 'Leading Organizer',
+    period: '2020',
+    location: null,
+    description: 'Programming contest organization.',
   },
   {
     organization: 'Human Being Society Forever',
     role: 'Co-founder',
     period: null,
+    location: null,
     description: 'Community organization leadership.',
   },
 ]
+export const mentoring = {
+  role: 'Graduate Student Mentor',
+  program: 'NSF Research Experiences for Undergraduates (REU) Program',
+  organization: 'Tennessee Technological University',
+  period: 'Summers 2025 and 2026',
+  description:
+    'Supported undergraduate research progress and technical development under faculty supervision.',
+}
 export const achievements = [
   {
-    title: 'Banglalink SDG Hackathon / Code for a Cause',
+    title: 'Third runner-up · Banglalink SDG Hackathon: Code for a Cause',
     detail: '2018',
   },
   {
-    title: 'SSC and HSC Board Scholarships',
-    detail: 'Academic recognition',
+    title: 'Board Scholarship, General Grade · HSC, Dhaka Board',
+    detail: '2016',
+  },
+  {
+    title: 'Board Scholarship, General Grade · SSC, Dhaka Board',
+    detail: '2014',
   },
 ]
 export const navigation = [

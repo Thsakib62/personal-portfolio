@@ -108,9 +108,9 @@ test('research search, status filters and citations use supported records', asyn
 }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write'])
   await page.goto('/research')
-  await expect(page.locator('.publication-entry')).toHaveCount(5)
+  await expect(page.locator('.publication-entry')).toHaveCount(7)
   await expect(
-    page.getByRole('heading', { name: 'Work in progress' }),
+    page.getByRole('heading', { name: 'Registered / in preparation' }),
   ).toBeVisible()
   await page
     .getByRole('searchbox', { name: 'Search publications' })
@@ -122,10 +122,10 @@ test('research search, status filters and citations use supported records', asyn
     ),
   ).toBeVisible()
   await page.getByRole('searchbox', { name: 'Search publications' }).fill('')
-  await page.getByLabel('Category').selectOption('Manuscripts / submissions')
+  await page.getByLabel('Category').selectOption('Manuscript under review')
   await expect(page.locator('.publication-entry')).toHaveCount(1)
   await expect(page.getByRole('button', { name: 'Copy BibTeX' })).toHaveCount(0)
-  await page.getByLabel('Category').selectOption('Published peer-reviewed work')
+  await page.getByLabel('Category').selectOption('Published conference papers')
   await expect(page.locator('.publication-entry')).toHaveCount(3)
   await page.getByLabel('Year').selectOption('2021')
   await expect(page.locator('.publication-entry')).toHaveCount(1)
@@ -265,10 +265,10 @@ test('public pages keep publication status and omit editorial notes', async ({
   }
   await page.goto('/research')
   await expect(page.locator('#access-manuscript')).toContainText(
-    'Manuscript status unverified',
+    'Accepted for publication in IEEE Access, 2026',
   )
   await expect(page.locator('#mecc-2025')).toContainText(
-    'Conference preprint · proceedings status unverified',
+    'Extended abstract and poster',
   )
   await page.goto('/experience')
   for (const heading of [

@@ -10,6 +10,7 @@ import {
   cvDocumentCategories,
   education,
   experience,
+  mentoring,
   professionalContact,
   skills,
 } from '../data/portfolio'
@@ -36,12 +37,29 @@ export function Experience() {
                 {item.period ?? 'Graduate research'}
               </p>
               <h3>{item.role}</h3>
-              <p>{item.organization}</p>
+              <p>
+                {item.organization} · {item.location}
+              </p>
               <p className="muted">{item.description}</p>
             </div>
           </article>
         ))}
       </div>
+      <section className="inner-section">
+        <SectionHeading eyebrow="Research mentoring" title="Mentoring" />
+        <div className="timeline">
+          <article>
+            <GraduationCap size={24} aria-hidden="true" />
+            <div>
+              <p className="card-kicker">{mentoring.period}</p>
+              <h3>{mentoring.role}</h3>
+              <p>{mentoring.program}</p>
+              <p>{mentoring.organization}</p>
+              <p className="muted">{mentoring.description}</p>
+            </div>
+          </article>
+        </div>
+      </section>
       {education.map((item, index) => (
         <section className="inner-section" key={item.institution}>
           <SectionHeading
@@ -89,7 +107,9 @@ export function Experience() {
               <div>
                 <p className="card-kicker">{item.period}</p>
                 <h3>{item.role}</h3>
-                <p>{item.organization}</p>
+                <p>
+                  {item.organization} · {item.location}
+                </p>
                 <p className="muted">{item.description}</p>
               </div>
             </article>
@@ -103,6 +123,7 @@ export function Experience() {
             <article key={item.organization}>
               <BriefcaseBusiness size={23} />
               <div>
+                {item.period && <p className="card-kicker">{item.period}</p>}
                 <h3>{item.role}</h3>
                 <p>{item.organization}</p>
                 <p className="muted">{item.description}</p>

@@ -11,10 +11,11 @@ import {
 } from '../components/ui'
 
 const categories: PublicationCategory[] = [
-  'Published peer-reviewed work',
-  'Manuscripts / submissions',
-  'Work in progress',
-  'Status pending verification',
+  'Accepted journal article',
+  'Published conference papers',
+  'Conference extended abstract / poster',
+  'Manuscript under review',
+  'Registered / in preparation',
 ]
 
 export function Research() {
@@ -112,8 +113,8 @@ export function Research() {
               <p className="eyebrow">02 / Research record</p>
               <h2 id="publications-title">Publications & manuscripts</h2>
               <p className="section-intro">
-                Conference publications, a conference preprint, and a manuscript
-                are listed separately by status and year.
+                Accepted and published work, a conference poster contribution,
+                and unpublished manuscripts are separated by status.
               </p>
             </div>
           </div>

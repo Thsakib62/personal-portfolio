@@ -4,13 +4,13 @@ import { Link, useParams } from 'react-router-dom'
 import {
   publications,
   researchProjects,
-  undergraduateProjects,
+  earlierProjects,
 } from '../data/portfolio'
 import type { EvidenceMetric, ResearchFigureData } from '../data/models'
 import { PageIntro, ProjectCard, SectionHeading, Tag } from '../components/ui'
 import { ResearchFigure } from '../components/ResearchFigure'
 
-const allProjects = [...researchProjects, ...undergraduateProjects]
+const allProjects = [...researchProjects, ...earlierProjects]
 const filters = [
   'All graduate work',
   'Perception security',
@@ -64,12 +64,15 @@ export function Projects() {
         ))}
       </div>
       <section className="inner-section" id="undergraduate">
-        <SectionHeading eyebrow="Earlier work" title="Undergraduate projects">
-          A secondary collection spanning security, machine learning,
-          telemedicine, and software development.
+        <SectionHeading
+          eyebrow="Independent & earlier work"
+          title="Independent & earlier projects"
+        >
+          Independent machine-learning work and undergraduate-era software,
+          security, and computer-vision projects.
         </SectionHeading>
         <div className="project-grid two-columns">
-          {undergraduateProjects.map((project) => (
+          {earlierProjects.map((project) => (
             <ProjectCard compact project={project} key={project.id} />
           ))}
         </div>
@@ -274,8 +277,10 @@ export function ProjectDetail() {
               {section.title}
             </a>
           ))}
-          {(project.resources || project.publicationIds?.length) && (
-            <a href="#resources">Related publication & status</a>
+          {(project.resources ||
+            project.publicationIds?.length ||
+            project.sourceLinks?.length) && (
+            <a href="#resources">Related publication & sources</a>
           )}
           <a href="#media">
             {hasFigures ? 'Additional media' : 'Reserved media'}
@@ -289,9 +294,11 @@ export function ProjectDetail() {
           {available.map((section) => (
             <DetailSection key={section.id} {...section} />
           ))}
-          {(project.resources || project.publicationIds?.length) && (
+          {(project.resources ||
+            project.publicationIds?.length ||
+            project.sourceLinks?.length) && (
             <section id="resources" className="case-section">
-              <h2>Related publication & status</h2>
+              <h2>Related publication & sources</h2>
               {project.resources && <p>{project.resources}</p>}
               {project.publicationIds?.map((publicationId) => {
                 const paper = publications.find(
@@ -310,6 +317,19 @@ export function ProjectDetail() {
                   )
                 )
               })}
+              {project.sourceLinks?.map((source) => (
+                <a
+                  className="text-link case-paper-link"
+                  href={source.url}
+                  key={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {source.label}
+                  <ArrowRight size={16} aria-hidden="true" />
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+              ))}
             </section>
           )}
           <section id="media" className="case-section">

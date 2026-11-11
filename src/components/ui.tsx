@@ -106,7 +106,7 @@ export function PublicationEntry({
 }) {
   const [copyStatus, setCopyStatus] = useState('')
   const canCite =
-    publication.category === 'Published peer-reviewed work' &&
+    publication.category === 'Published conference papers' &&
     publication.authors &&
     publication.venue &&
     publication.year &&
@@ -141,7 +141,7 @@ export function PublicationEntry({
             target="_blank"
             rel="noopener noreferrer"
           >
-            Official DOI <ArrowUpRight size={15} />
+            {publication.urlLabel ?? 'Official DOI'} <ArrowUpRight size={15} />
           </a>
         )}
         {canCite && (

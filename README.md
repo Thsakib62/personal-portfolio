@@ -1,6 +1,6 @@
 # Tahmid Hasan Sakib — Research & Engineering
 
-An existing static React portfolio developed further for graduate research, engineering projects, publications, and background. It uses React, TypeScript, Vite, React Router, Motion, Lucide, and Tailwind CSS v4. No backend, paid service, or public deployment is required.
+Static React portfolio for graduate research, engineering projects, publications, and professional background. It uses React, TypeScript, Vite, React Router, Motion, Lucide, and Tailwind CSS v4. It has no backend or analytics.
 
 ## Run and verify
 
@@ -19,19 +19,20 @@ npm test
 
 ## Structure
 
-- `src/data/portfolio.ts` — structured profile, distinct graduate and undergraduate projects, publication records, skills, education, experience, achievements, and navigation.
-- `src/data/models.ts` — reusable project and publication types. Optional case-study fields are rendered only when supported.
+- `src/data/portfolio.ts` — structured profile, verified contact links, independent and earlier projects, publication records, skills, education, experience, mentoring, achievements, and navigation.
+- `src/data/researchProjects.ts` — graduate research case studies and references to six approved research figures.
+- `src/data/models.ts` — project and publication types plus guarded preparation/available CV document states.
 - `src/pages/Home.tsx` — selected research, publication, and background preview.
 - `src/pages/Research.tsx` — themes and searchable, category/year-filterable publication record.
 - `src/pages/Projects.tsx` — project index, filters, and reusable detail route at `/projects/:id`.
-- `src/pages/Sections.tsx` — experience, education, CV placeholder, contact placeholder, and 404.
-- `src/components` and `src/styles.css` — existing shared design system, theme, navigation, and reusable cards.
+- `src/pages/Sections.tsx` — experience, education, six CV/resume categories, contact, and 404.
+- `src/components` and `src/styles.css` — shared design system, themes, navigation, figure viewer, and reusable cards.
 - `CONTENT_TODO.md` — unresolved verification and assets.
 
-The supplied publication PDF is source material, not proof of publication status. Records with corroborated conference and DOI information are separated from preprints and uncertain manuscripts. REDAP and PULSE remain independent project case studies; no paper relationship is inferred. BibTeX buttons appear only on records with title, author, venue, year, and DOI data. No paper PDFs are hosted.
+The Research page separates accepted journal work, published conference papers, an extended abstract/poster contribution, a manuscript under review, and a registered manuscript awaiting full submission. BibTeX actions appear only for published conference records with the required citation fields. Final publisher metadata and some individual contribution details remain open in `CONTENT_TODO.md`.
 
-Project images and videos use labeled placeholders until approved assets arrive. The CV and resume page has no download links yet. Contact has no guessed profile links, public phone number, or inactive form. The professional portrait is also pending.
+The site contains one approved professional portrait and six approved research figures. It hosts no research video or paper PDF. All six CV/resume categories display “In preparation” and have no download links. Contact uses owner-authorized institutional email and professional profiles; it has no phone number or contact form.
 
 ## Hosting
 
-`public/_redirects` provides a static-host SPA fallback. This branch is for review only. Do not deploy or merge without a separate decision.
+`public/_redirects` provides a static-host SPA fallback. For Cloudflare Pages, the build command is `npm run build` and the output directory is `dist`. Confirm the final production URL, metadata, robots/sitemap policy, research and asset approvals, and PDF release decisions before deployment. A completed audit and explicit owner approval are required; no deployment is performed by this repository.

@@ -50,5 +50,9 @@ This portfolio separates supported facts from provisional wording. Review the su
 
 ## Final review
 
-- [ ] Review mobile layouts, keyboard interaction, contrast, and both themes on real devices.
-- [ ] Review all public copy and status labels, then authorize deployment separately. This development phase does not deploy the site.
+- [x] Phase 7E local audit checked tracked assets, build output, dependency advisories, contact targets, route and history behavior, automated accessibility, and 360–1440 px layouts. See `PREDEPLOYMENT_AUDIT.md` for findings and scope limits.
+- [ ] Review mobile layouts, keyboard interaction, contrast, and both themes on real devices and with assistive technology. Local automated checks are complete.
+- [ ] Choose the production URL and decide canonical, robots, sitemap, and social-preview behavior without guessing a domain.
+- [ ] Verify Cloudflare Pages preview routing after separate deployment authorization; local SPA refresh works and the existing `_redirects` file is present.
+- [ ] Review public research copy, metrics, figures, attribution, and security-disclosure limits with the owner and relevant collaborators before public launch.
+- [ ] Review all public copy and status labels, then authorize deployment separately. This audit phase does not deploy the site.

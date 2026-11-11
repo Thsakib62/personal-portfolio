@@ -1,5 +1,37 @@
 export type ProjectCategory = 'Graduate research' | 'Undergraduate project'
 
+declare const publicPdfPathBrand: unique symbol
+export type PublicPdfPath = `/${string}.pdf` & {
+  readonly [publicPdfPathBrand]: true
+}
+
+// Call only after a PDF has been approved and placed in the public site.
+export function publicPdfPath(path: `/${string}.pdf`): PublicPdfPath {
+  if (!/^\/(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_-]+\.pdf$/.test(path)) {
+    throw new Error('A document download needs a same-origin PDF path')
+  }
+  return path as PublicPdfPath
+}
+
+export type CvDocument =
+  | {
+      state: 'preparation'
+      title: string
+      description: string
+      statusLabel: 'In preparation'
+      pdfUrl?: never
+      downloadLabel?: never
+    }
+  | {
+      state: 'available'
+      title: string
+      description: string
+      pdfUrl: PublicPdfPath
+      downloadLabel: string
+      format: 'PDF'
+      statusLabel?: never
+    }
+
 export interface EvidenceMetric {
   value: string
   label: string

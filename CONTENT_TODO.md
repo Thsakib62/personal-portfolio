@@ -45,7 +45,9 @@ This portfolio separates supported facts from provisional wording. Review the su
 ## Links and documents
 
 - [x] Owner supplied and authorized institutional email, GitHub, LinkedIn, Google Scholar, ORCID, and Kaggle links. The Contact page uses these exact details.
-- [ ] Review and approve private academic CV and resume drafts before any public PDF downloads. Specialized resume documents have not yet been created; all six public document categories remain in preparation.
+- [x] Document-card infrastructure supports an explicitly supplied same-origin PDF path after approval. All six public categories remain in preparation, with no downloads or document assets.
+- [ ] Review and approve the private academic CV and general engineering resume V2 drafts before any public PDF release. The other four specialized resumes remain unprepared.
+- [ ] Before release, review each approved PDF for privacy, content accuracy, and accessibility, and verify the final public URL and download label.
 - [ ] Verify any future lab/institution profile or personal domain link before adding it.
 - [ ] Provide approved repository and demo links. There are no guessed URLs in the site.
 - [ ] Set final canonical URL and social preview assets after a domain is selected.

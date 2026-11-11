@@ -964,6 +964,24 @@ main:focus {
 .document-card .tag {
   margin-top: 25px;
 }
+.document-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 25px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.document-download:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.document-format {
+  margin-left: 3px;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
 .document-card .small {
   font-size: 0.78rem;
 }

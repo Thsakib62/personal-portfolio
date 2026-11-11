@@ -9,6 +9,7 @@ test('approved portrait loads with its natural proportions on the homepage', asy
     name: 'Professional portrait of Tahmid Hasan Sakib.',
   })
   await expect(portrait).toBeVisible()
+  await expect(page.locator('.hero-profile')).toHaveCSS('opacity', '1')
   await expect(portrait).toHaveAttribute(
     'src',
     '/images/professional-headshot.webp',
@@ -73,7 +74,7 @@ test('document categories are future states without invented downloads', async (
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
 })
 
-test('experience sections and contact placeholders keep verified boundaries', async ({
+test('experience sections and professional contact keep verified boundaries', async ({
   page,
 }) => {
   await page.goto('/experience')
@@ -97,16 +98,10 @@ test('experience sections and contact placeholders keep verified boundaries', as
     page.getByText('Military Institute of Science and Technology'),
   ).toBeVisible()
   await page.goto('/contact')
-  await expect(page.getByText('Contact details unavailable')).toBeVisible()
   await expect(
-    page.getByText('Institutional email', { exact: true }),
+    page.locator('main a[href="mailto:tsakib42@tntech.edu"]'),
   ).toBeVisible()
-  await expect(
-    page.getByText('GitHub · LinkedIn · Google Scholar'),
-  ).toBeVisible()
-  await expect(page.locator('a[href^="mailto:"], a[href^="tel:"]')).toHaveCount(
-    0,
-  )
+  await expect(page.locator('a[href^="tel:"]')).toHaveCount(0)
   await expect(page.locator('form')).toHaveCount(0)
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
 })

@@ -96,7 +96,9 @@ test('all routes load directly without horizontal overflow or inaccessible conte
   await expect(page.getByText('In preparation')).toHaveCount(6)
   await expect(page.locator('a[download]')).toHaveCount(0)
   await page.goto('/contact')
-  await expect(page.getByText('Contact details unavailable')).toBeVisible()
+  await expect(
+    page.locator('main a[href="mailto:tsakib42@tntech.edu"]'),
+  ).toBeVisible()
   await expect(page.locator('form')).toHaveCount(0)
 })
 

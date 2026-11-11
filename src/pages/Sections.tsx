@@ -11,6 +11,7 @@ import {
   cvDocumentCategories,
   education,
   experience,
+  professionalContact,
   skills,
 } from '../data/portfolio'
 import { PageIntro, SectionHeading, Tag } from '../components/ui'
@@ -152,31 +153,50 @@ export function Contact() {
   return (
     <div className="container page-content contact-page">
       <PageIntro eyebrow="Contact" title="A conversation can start something.">
-        For research collaboration, engineering opportunities, or a thoughtful
-        exchange about trustworthy autonomous systems.
+        Connect about research collaboration, embedded systems and robotics,
+        computer vision and AI engineering, cyber-physical and autonomous
+        systems research, or relevant engineering opportunities.
       </PageIntro>
       <div className="contact-panel">
         <Mail size={32} strokeWidth={1.2} aria-hidden="true" />
-        <h2>Let’s connect.</h2>
-        <p>
-          Institutional email and verified professional profiles will be listed
-          here when available.
-        </p>
-        <div className="contact-channel-grid">
-          <div>
-            <h3>Direct contact</h3>
-            <p>Institutional email</p>
-          </div>
-          <div>
-            <h3>Professional profiles</h3>
-            <p>GitHub · LinkedIn · Google Scholar</p>
-          </div>
-        </div>
-        <span className="tag">Contact details unavailable</span>
+        <p className="eyebrow">Institutional email</p>
+        <h2>Get in touch.</h2>
+        <a
+          className="contact-email"
+          href={`mailto:${professionalContact.email}`}
+        >
+          {professionalContact.email}
+          <ArrowUpRight size={22} aria-hidden="true" />
+        </a>
+        <p>For research and relevant engineering conversations.</p>
       </div>
-      <Link className="text-link" to="/research">
-        Explore my research in the meantime
-        <ArrowUpRight size={17} />
+      <section className="contact-profiles" aria-labelledby="profiles-heading">
+        <div className="contact-profiles-heading">
+          <p className="eyebrow">Elsewhere</p>
+          <h2 id="profiles-heading">Professional profiles</h2>
+        </div>
+        <div className="contact-profile-grid">
+          {professionalContact.profiles.map((item) => (
+            <a
+              className="contact-profile-link"
+              href={item.url}
+              key={item.id}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>
+                <strong>{item.label}</strong>
+                <small>{item.description}</small>
+                <span className="sr-only">(opens in a new tab)</span>
+              </span>
+              <ArrowUpRight size={19} aria-hidden="true" />
+            </a>
+          ))}
+        </div>
+      </section>
+      <Link className="text-link contact-research-link" to="/research">
+        View research
+        <ArrowUpRight size={17} aria-hidden="true" />
       </Link>
     </div>
   )

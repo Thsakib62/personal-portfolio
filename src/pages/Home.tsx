@@ -57,8 +57,8 @@ export function Home() {
               Explore research
               <ArrowUpRight size={17} />
             </Link>
-            <Link to="/projects" className="button button-secondary">
-              View projects
+            <Link to="/contact" className="button button-secondary">
+              Get in touch
               <ArrowRight size={17} />
             </Link>
             <Link to="/cv" className="cv-link">

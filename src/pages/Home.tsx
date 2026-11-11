@@ -251,11 +251,11 @@ export function Home() {
         </div>
         <div className="earlier-work">
           <p>
-            <strong>Earlier chapters</strong>Machine learning projects,
+            <strong>Earlier chapters</strong>Independent machine learning,
             full-stack systems, and community leadership.
           </p>
           <Link className="text-link" to="/projects#undergraduate">
-            Explore undergraduate work
+            Explore independent & earlier work
             <ArrowUpRight size={17} />
           </Link>
         </div>

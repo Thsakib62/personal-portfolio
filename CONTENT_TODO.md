@@ -4,12 +4,11 @@ This portfolio separates supported facts from provisional wording. Review the su
 
 ## Publication verification
 
-- [ ] Check SATC 2026, MILCOM 2025, and ACMI 2021 page details, pagination, and final citation formatting against publisher records. These editorial checks were removed from public publication notes.
-- [ ] Keep the MECC 2025 contribution tied to its documented conference preprint context until an authoritative proceedings record establishes final publication status; do not infer a journal publication.
-- [ ] Verify final IEEE Access publisher metadata and update the public listing after confirming the owner-reported acceptance; do not use template year or DOI text as citation evidence.
-- [ ] Recheck the official IEEE records, exact author order, page ranges, and final citation format for SATC 2026, MILCOM 2025, and ACMI 2021. DOI links are present, but publication details may change.
-- [ ] Confirm whether the MECC 2025 preprint has a final proceedings citation, permanent link, and peer-reviewed publication status.
-- [ ] Confirm REDAP full CVPR 2027 submission before any public "submitted" or "under review" label. PULSE is owner-reported under review at VTC 2027-Spring; obtain a public citation before adding a formal publication entry. Both manuscripts remain private.
+- [x] Owner confirmed IEEE Access acceptance in 2026; the public listing now says accepted for publication. Owner confirmed PULSE under review at VTC 2027-Spring and a personal MECC 2025 poster presentation.
+- [ ] Verify final IEEE Access publisher DOI, author list, volume, issue, pages, and publication date. Do not use template DOI or year text as citation evidence.
+- [ ] Recheck publisher-exported author order, page ranges, and final citation format for SATC 2026, MILCOM 2025, and ACMI 2021. The existing DOI links are retained.
+- [ ] Reconcile the MECC 2025 Zenodo extended-abstract/poster record with a formal proceedings citation and page range before claiming indexed proceedings publication. The poster presentation is owner-confirmed.
+- [ ] Confirm REDAP full CVPR 2027 submission before any public "submitted" or "under review" label. The registered manuscript and the PULSE manuscript remain private.
 - [ ] Add page ranges, volume/issue where applicable, and publisher-exported BibTeX if the generated minimal citations need replacement.
 - [ ] Review copyright and permissions before linking to or hosting papers, slides, posters, or manuscript PDFs.
 
@@ -31,16 +30,13 @@ This portfolio separates supported facts from provisional wording. Review the su
 
 ## Profile, education, experience, and achievements
 
-- [ ] Resolve resume differences on degree title, completion date, and GPA against the university record. Public copy uses neutral master's studies wording and omits the disputed GPA and date.
-- [ ] Verify Graduate Research Assistant start date; public copy omits the resume-derived May 2024 date.
-- [ ] Confirm the Robi internship responsibilities, leadership activities, and award placement before restoring more detailed claims.
+- [x] Owner confirmed the M.S. in Electrical and Computer Engineering, 4.00/4.00 current GPA, successful thesis defense, pending December 2026 conferral, and MIST B.Sc. in CSE completed August 2021. Public copy preserves the pending conferral distinction.
+- [x] Owner confirmed the May 2024–Present Graduate Research Assistant appointment and the December 2019–January 2020 Robi Hardware Engineer Intern role and duties.
+- [x] Owner confirmed NSF REU graduate mentoring in summers 2025 and 2026, the Banglalink placement and board scholarships, and selected 2020 leadership roles.
 - [x] Professional portrait supplied and approved for the homepage; the public copy contains no source metadata.
-- [ ] Confirm the official master's degree wording and graduation date. Later resumes say M.S. Electrical and Computer Engineering, expected December 2026; earlier variants say Computer Engineering and July 2026.
-- [ ] Confirm master's GPA, institution/department wording, and advisor/lab names if public.
-- [ ] Confirm undergraduate degree wording and completion date.
-- [ ] Confirm Graduate Research Assistant role dates and descriptions, Robi internship responsibilities, and any missing project dates.
-- [ ] Confirm Banglalink award wording and year, SSC/HSC scholarship years, and leadership role dates/responsibilities.
-- [ ] Confirm individual roles and exact technologies for the five undergraduate projects.
+- [ ] Check official degree-conferral notice when issued. Owner-confirmed credentials remain distinct from independently inspected official records.
+- [ ] Verify individual roles and exact technologies for earlier collaborative projects before adding personal-ownership claims. The IoT project is independently confirmed as post-undergraduate; its exact date and performance metrics remain open.
+- [ ] Remediate the credential exposure in the ANGTHAS source repository through a separate private security process before promoting its link.
 
 ## Links and documents
 

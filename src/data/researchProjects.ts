@@ -71,7 +71,8 @@ export const researchProjects: Project[] = [
       ],
     },
     resources:
-      'Related REDAP manuscript under review. The manuscript and later physical demonstrations are separate evidence contexts; no private manuscript is hosted here.',
+      'CVPR 2027 registration is complete; full REDAP manuscript submission is pending. The manuscript and later physical demonstrations are separate evidence contexts; no private manuscript is hosted here.',
+    publicationIds: ['redap-manuscript'],
     media: [
       { type: 'image', label: 'Setup and restoration figures reserved' },
       { type: 'video', label: 'Physical demonstrations reserved' },
@@ -152,7 +153,8 @@ export const researchProjects: Project[] = [
       ],
     },
     resources:
-      'Related PULSE manuscript under review. A public manuscript link is not provided here.',
+      'PULSE is submitted and under review at IEEE VTC 2027-Spring. A public manuscript PDF is not hosted here.',
+    publicationIds: ['pulse-manuscript'],
     media: [
       { type: 'image', label: 'Physical setup and plots reserved' },
       { type: 'video', label: 'No approved run video' },
@@ -239,7 +241,7 @@ export const researchProjects: Project[] = [
       ],
     },
     resources:
-      'Related IEEE Access manuscript; its public publication status remains pending verification.',
+      'The related QCar1 paper is accepted for publication in IEEE Access, 2026. Final publisher citation details remain pending.',
     publicationIds: ['access-manuscript'],
     media: [
       { type: 'image', label: 'QCar1 testbed and figures reserved' },

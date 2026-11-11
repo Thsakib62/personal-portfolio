@@ -1,4 +1,8 @@
-export type ProjectCategory = 'Graduate research' | 'Undergraduate project'
+export type ProjectCategory =
+  | 'Graduate research'
+  | 'Independent project'
+  | 'Undergraduate project'
+  | 'Earlier project'
 
 declare const publicPdfPathBrand: unique symbol
 export type PublicPdfPath = `/${string}.pdf` & {
@@ -82,15 +86,17 @@ export interface Project {
   findings?: string
   resources?: string
   publicationIds?: string[]
+  sourceLinks?: { label: string; url: string }[]
   media?: { type: 'image' | 'video'; label: string }[]
   caseStudy?: CaseStudy
 }
 
 export type PublicationCategory =
-  | 'Published peer-reviewed work'
-  | 'Manuscripts / submissions'
-  | 'Work in progress'
-  | 'Status pending verification'
+  | 'Accepted journal article'
+  | 'Published conference papers'
+  | 'Conference extended abstract / poster'
+  | 'Manuscript under review'
+  | 'Registered / in preparation'
 
 export interface Publication {
   id: string
@@ -103,6 +109,7 @@ export interface Publication {
   venueContext?: string
   doi?: string
   url?: string
+  urlLabel?: string
   bibtex?: string
   note?: string
 }

@@ -6,7 +6,7 @@ import {
   profile,
   professionalContact,
   researchProjects,
-  undergraduateProjects,
+  earlierProjects,
 } from '../data/portfolio'
 
 export function Layout() {
@@ -31,7 +31,7 @@ export function Layout() {
   }, [dark])
   useEffect(() => {
     const item = navigation.find((item) => item.to === location.pathname)
-    const project = [...researchProjects, ...undergraduateProjects].find(
+    const project = [...researchProjects, ...earlierProjects].find(
       (item) => `/projects/${item.id}` === location.pathname,
     )
     document.title = `${project?.title ?? item?.label ?? 'Page not found'} | ${profile.name}`

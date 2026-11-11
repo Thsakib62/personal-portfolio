@@ -16,6 +16,15 @@ export interface CaseStudy {
   limitations: string[]
 }
 
+export interface ResearchFigureData {
+  section: 'architecture' | 'evaluation' | 'findings'
+  heading: string
+  src: string
+  alt: string
+  caption: string
+  note?: string
+}
+
 export interface Project {
   id: string
   title: string
@@ -30,6 +39,8 @@ export interface Project {
     | 'Earlier work'
   featured?: boolean
   visual?: 'restoration' | 'monitoring' | 'vehicle'
+  cardImage?: string
+  figures?: ResearchFigureData[]
   problem?: string
   contributions?: string[]
   approach?: string

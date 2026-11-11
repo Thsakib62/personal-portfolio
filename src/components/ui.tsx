@@ -60,7 +60,12 @@ export function ProjectCard({
         : CircuitBoard
   return (
     <article className={`project-card ${compact ? 'compact' : ''}`}>
-      {!compact && (
+      {!compact && project.cardImage && (
+        <div className="project-visual project-visual-image">
+          <img src={project.cardImage} alt="" loading="lazy" decoding="async" />
+        </div>
+      )}
+      {!compact && !project.cardImage && (
         <div
           className={`project-visual ${project.visual ?? 'vehicle'}`}
           role="img"

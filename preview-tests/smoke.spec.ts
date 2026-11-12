@@ -21,8 +21,33 @@ const routes = [
 const sha256 = (bytes: Buffer) =>
   createHash('sha256').update(bytes).digest('hex').toUpperCase()
 
+const approvedImages = [
+  ['/favicon.svg', 'image/svg+xml'],
+  ['/images/professional-headshot.webp', 'image/webp'],
+  ['/research/redap-qcar2-setup.png', 'image/png'],
+  ['/research/pulse-methodology.png', 'image/png'],
+  ['/research/pulse-qcar2-route-setup.png', 'image/png'],
+  ['/research/qcar1-system-architecture.png', 'image/png'],
+  ['/research/qcar1-three-stop-route.jpg', 'image/jpeg'],
+  ['/research/qcar1-baseline-stopping-distribution.png', 'image/png'],
+] as const
+
+async function expectVisibleImagesLoaded(page: Page) {
+  for (const image of await page.locator('img:visible').all()) {
+    await image.scrollIntoViewIfNeeded()
+    await expect
+      .poll(() =>
+        image.evaluate((node: HTMLImageElement) =>
+          node.complete ? node.naturalWidth : 0,
+        ),
+      )
+      .toBeGreaterThan(0)
+  }
+}
+
 function observePage(page: Page) {
   const errors: string[] = []
+  let intentionalNavigation = false
   page.on('request', (request) => {
     if (
       request.url().startsWith('http') &&
@@ -35,9 +60,11 @@ function observePage(page: Page) {
   page.on('console', (message) => {
     if (message.type() === 'error') errors.push(message.text())
   })
-  page.on('requestfailed', (request) =>
-    errors.push(`Failed request: ${request.url()}`),
-  )
+  page.on('requestfailed', (request) => {
+    const reason = request.failure()?.errorText ?? 'unknown failure'
+    if (intentionalNavigation && reason === 'net::ERR_ABORTED') return
+    errors.push(`Failed request (${reason}): ${request.url()}`)
+  })
   page.on('response', (response) => {
     if (
       response.url().startsWith(expectedOrigin + '/') &&
@@ -46,33 +73,58 @@ function observePage(page: Page) {
       errors.push(`${response.status()} ${new URL(response.url()).pathname}`)
     }
   })
-  return errors
+  return {
+    errors,
+    async navigate(action: () => Promise<unknown>) {
+      intentionalNavigation = true
+      try {
+        await action()
+        await page.waitForLoadState('load')
+      } finally {
+        intentionalNavigation = false
+      }
+    },
+  }
 }
 
 test('all published SPA routes load directly and survive refresh', async ({
   page,
   request,
 }) => {
-  const errors = observePage(page)
+  const observation = observePage(page)
   for (const [route, heading] of routes) {
     const response = await request.get(route, { maxRedirects: 0 })
     expect(response.status(), route).toBe(200)
     expect(response.headers()['content-type'], route).toContain('text/html')
     expect(await response.text(), route).toContain('id="root"')
-    await page.goto(route)
+    await observation.navigate(() => page.goto(route))
     expect(new URL(page.url()).origin, route).toBe(expectedOrigin)
     await expect(page.getByRole('heading', { level: 1 }), route).toContainText(
       heading,
       { ignoreCase: true },
     )
     await expect(page, route).toHaveTitle(/Tahmid Hasan Sakib/)
-    await page.reload()
+    await expectVisibleImagesLoaded(page)
+    await observation.navigate(() => page.reload())
     await expect(page.getByRole('heading', { level: 1 }), route).toContainText(
       heading,
       { ignoreCase: true },
     )
+    await expectVisibleImagesLoaded(page)
   }
-  expect(errors).toEqual([])
+  expect(observation.errors).toEqual([])
+})
+
+test('approved images are reachable and retain their exact bytes', async ({
+  request,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop-1440')
+  for (const [path, contentType] of approvedImages) {
+    const response = await request.get(path, { maxRedirects: 0 })
+    expect(response.status(), path).toBe(200)
+    expect(response.headers()['content-type'], path).toContain(contentType)
+    expect(await response.body(), path).toEqual(readFileSync(`public${path}`))
+  }
 })
 
 test('unknown application route renders the intentional soft 404', async ({
@@ -184,17 +236,27 @@ test('preview indexing header and expected private paths are safe', async ({
 test('responsive navigation, themes, figures, links, and axe checks', async ({
   page,
 }, testInfo) => {
-  const errors = observePage(page)
-  await page.goto('/')
+  const observation = observePage(page)
+  await observation.navigate(() => page.goto('/'))
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Tahmid Hasan Sakib',
   )
+  await expect(page.locator('.hero-copy')).toHaveCSS('opacity', '1')
+  await expect(page.locator('.hero-profile')).toHaveCSS('opacity', '1')
+  await expectVisibleImagesLoaded(page)
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true)
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
+  if (testInfo.project.name === 'desktop-1440') {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await observation.navigate(() => page.reload())
+    await expect(page.locator('.hero-copy')).toHaveCSS('opacity', '1')
+    await expect(page.locator('.hero-profile')).toHaveCSS('opacity', '1')
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
+  }
   await page.screenshot({
     path: `test-results/preview-home-${testInfo.project.name}.png`,
     fullPage: true,
@@ -228,7 +290,7 @@ test('responsive navigation, themes, figures, links, and axe checks', async ({
   await page.getByRole('button', { name: 'Switch to dark theme' }).click()
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
-  await page.goto('/projects/pulse')
+  await observation.navigate(() => page.goto('/projects/pulse'))
   const trigger = page.getByRole('button', {
     name: 'View full figure: Monitoring architecture',
   })
@@ -238,13 +300,8 @@ test('responsive navigation, themes, figures, links, and axe checks', async ({
   ).toBeVisible()
   await page.keyboard.press('Escape')
   await expect(trigger).toBeFocused()
-  for (const image of await page.locator('img:visible').all()) {
-    await image.scrollIntoViewIfNeeded()
-    await expect
-      .poll(() => image.evaluate((node: HTMLImageElement) => node.naturalWidth))
-      .toBeGreaterThan(0)
-  }
-  await page.goto('/contact')
+  await expectVisibleImagesLoaded(page)
+  await observation.navigate(() => page.goto('/contact'))
   await expect(page.locator('.contact-email')).toHaveAttribute(
     'href',
     'mailto:tsakib42@tntech.edu',
@@ -260,7 +317,7 @@ test('responsive navigation, themes, figures, links, and axe checks', async ({
       page.locator(`.contact-profile-link[href="${href}"]`),
     ).toHaveAttribute('rel', 'noopener noreferrer')
   }
-  await page.goto('/cv')
+  await observation.navigate(() => page.goto('/cv'))
   await expect(page.locator('.document-card a[download]')).toHaveCount(6)
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
   expect(
@@ -272,5 +329,5 @@ test('responsive navigation, themes, figures, links, and axe checks', async ({
     path: `test-results/preview-cv-${testInfo.project.name}.png`,
     fullPage: true,
   })
-  expect(errors).toEqual([])
+  expect(observation.errors).toEqual([])
 })

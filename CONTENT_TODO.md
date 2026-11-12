@@ -59,7 +59,9 @@ This portfolio separates supported facts from provisional wording. Review the su
 
 - [x] Phase 7E local audit checked tracked assets, build output, dependency advisories, contact targets, route and history behavior, automated accessibility, and 360–1440 px layouts. See `PREDEPLOYMENT_AUDIT.md` for findings and scope limits.
 - [ ] Review mobile layouts, keyboard interaction, contrast, and both themes on real devices and with assistive technology. Local automated checks are complete.
-- [ ] Choose the production URL and decide canonical, robots, sitemap, and social-preview behavior without guessing a domain.
-- [ ] Verify Cloudflare Pages preview routing after separate deployment authorization; local SPA refresh works and the existing `_redirects` file is present.
+- [x] Phase 7G.2 prepared a Cloudflare Pages launch checklist. The site now relies on Pages' documented SPA fallback; an unsupported catch-all `200` `_redirects` rule was removed. A nested document 404 page was added for missing PDF requests. Static summary-card metadata was added without inventing a production URL. No Cloudflare deployment occurred.
+- [ ] Choose the actual production `*.pages.dev` URL or later custom domain. Decide canonical URL, sitemap, indexing policy, and social-preview image after the URL and asset rights are confirmed. Production indexing is proposed; preview `noindex` must be checked on Cloudflare.
+- [ ] Verify Pages build logs and resolved Node version, direct SPA routes/refresh, unknown routes, all six live PDF MIME types/downloads/hashes, and missing-document HTTP 404 on an authorized Cloudflare preview. Local Vite preview is not a Cloudflare routing test.
+- [ ] Complete real-device and screen-reader review of the site and public PDFs; confirm light/dark themes and 360–1440 px layouts on the deployed preview.
 - [ ] Review public research copy, metrics, figures, attribution, and security-disclosure limits with the owner and relevant collaborators before public launch.
 - [ ] Review all public copy and status labels, then authorize deployment separately. This audit phase does not deploy the site.

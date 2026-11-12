@@ -37,4 +37,4 @@ The downloadable PDFs are public release copies of the academic CV and five role
 
 ## Hosting
 
-`public/_redirects` provides a static-host SPA fallback. For Cloudflare Pages, the build command is `npm run build` and the output directory is `dist`. Confirm the final production URL, metadata, robots/sitemap policy, research and asset approvals, and approved PDF integrity before deployment. A completed audit and separate deployment approval are required; this repository change does not deploy the site.
+For Cloudflare Pages, use Git integration with `main` as the production branch, build command `npm run build`, and output directory `dist`. The committed `.nvmrc` requests Node 24; verify the resolved version in the Pages build log. Pages' built-in SPA fallback serves React Router deep links without a root `404.html` or `_redirects` rule. `public/documents/404.html` handles missing PDF paths on Pages; verify this behavior on a preview before launch. See `CLOUDFLARE_LAUNCH_CHECKLIST.md` for the URL, indexing, PDF integrity, preview, accessibility, and approval gates. No Cloudflare deployment is performed by repository preparation.

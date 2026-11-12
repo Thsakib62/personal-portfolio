@@ -1,3 +1,4 @@
+import { existsSync, readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 import {
   cvDocumentCategories,
@@ -20,6 +21,23 @@ const routes = [...mainRoutes, ...projectRoutes, '/not-a-page']
 const approvedDocumentPaths = cvDocumentCategories.flatMap((document) =>
   document.state === 'available' ? [document.pdfUrl] : [],
 )
+
+test('build keeps Cloudflare SPA fallback and document 404 assets distinct', async ({
+  page,
+}) => {
+  expect(existsSync('dist/_redirects')).toBe(false)
+  expect(existsSync('dist/404.html')).toBe(false)
+  expect(existsSync('dist/documents/404.html')).toBe(true)
+  const html = readFileSync('dist/index.html', 'utf8')
+  expect(html).toContain('name="twitter:card" content="summary"')
+  expect(html).not.toMatch(/<link[^>]+rel="canonical"/)
+  await page.goto('/projects/redap')
+  await page.reload()
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('REDAP')
+  const missingDocumentPage = await page.request.get('/documents/404.html')
+  expect(missingDocumentPage.headers()['content-type']).toContain('text/html')
+  expect(await missingDocumentPage.text()).toContain('Document not found')
+})
 
 for (const width of [360, 1280]) {
   test(`direct routes and links stay usable at ${width}px`, async ({

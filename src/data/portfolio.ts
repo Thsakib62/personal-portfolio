@@ -127,7 +127,7 @@ export const cvDocumentCategories: CvDocument[] = [
     state: 'available',
     title: 'Research / Simulation Resume',
     description:
-      'Research prototyping, CARLA, physical experiments, modeling, and hardware-in-the-loop evaluation.',
+      'Research prototyping, CARLA simulation, controlled physical experiments, modeling, and system validation.',
     pdfUrl: publicPdfPath(
       '/documents/Tahmid_Hasan_Sakib_Research_Simulation_Resume.pdf',
     ),

@@ -32,8 +32,8 @@ export function Home() {
       <section className="hero container">
         <motion.div
           className="hero-copy"
-          initial={reduced ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={reduced ? false : { y: 14 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.55 }}
         >
           <p className="eyebrow hero-eyebrow">
@@ -76,8 +76,8 @@ export function Home() {
         </motion.div>
         <motion.aside
           className="hero-profile"
-          initial={reduced ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={reduced ? false : { y: 10 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
           aria-label="Professional profile"
         >

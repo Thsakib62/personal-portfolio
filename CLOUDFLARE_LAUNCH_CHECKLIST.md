@@ -2,6 +2,8 @@
 
 Prepared 2026-11-12. **No Cloudflare project was created and no deployment occurred in Phase 7G.2.** Connecting GitHub later may start automatic builds and deployments; obtain separate owner authorization first.
 
+Phase 7G.3 added the opt-in `npm run test:preview` smoke suite and [controlled preview procedure](CLOUDFLARE_PREVIEW_VERIFICATION.md). No Pages project, GitHub connection, preview, or production deployment was created in that phase either. A temporary Direct Upload project with a harmless holding-page production deployment and a separate preview upload is the recommended first live test method after explicit authorization. It cannot later be converted to Git integration, and both its holding-page URL and preview URL may be publicly accessible.
+
 ## Build and routing
 
 - Repository: [`Thsakib62/personal-portfolio`](https://github.com/Thsakib62/personal-portfolio). Use Cloudflare Pages Git integration with `main` as the production branch, repository root as the project root, **React (Vite)**, build command `npm run build`, and output directory `dist`. The lockfile is committed; the build includes TypeScript validation.

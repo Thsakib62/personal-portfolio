@@ -41,9 +41,16 @@ This portfolio separates supported facts from provisional wording. Review the su
 ## Links and documents
 
 - [x] Owner supplied and authorized institutional email, GitHub, LinkedIn, Google Scholar, ORCID, and Kaggle links. The Contact page uses these exact details.
-- [x] Document-card infrastructure supports an explicitly supplied same-origin PDF path after approval. All six public categories remain in preparation, with no downloads or document assets.
-- [ ] Review and approve the private academic CV and general engineering resume V2 drafts before any public PDF release. The other four specialized resumes remain unprepared.
-- [ ] Before release, review each approved PDF for privacy, content accuracy, and accessibility, and verify the final public URL and download label.
+- [x] Owner explicitly approved the current content, pending statuses, and limitations of all six exact RC2 PDFs. Each source SHA-256 matched the private release manifest before copying; only these six PDFs were added under `public/documents/`. The typed document entries now expose their same-origin download links. No DOCX source or private release record was copied.
+- [x] Approved PDF release hashes, in the order shown on the CV / Resume page:
+  - Academic CV — `28E01298BD964FD9F68A6121891DA5710F5AB194BB47B9F3935638CF140AA7FD`
+  - General Engineering Resume — `45430E0E0B600DD027F1D09254941975A3F6EEF17E8536D2CBEA1FBAB3F1BDFC`
+  - Embedded Systems / Robotics Resume — `7A442726646DB94CCF0C55AA269E9F1A2E3724BE5959AFCEE3E81F182332E878`
+  - AI / ML / Computer Vision Resume — `14D431F6238E7ACD0AE7170DFA2D3226DE1E10A3E9E4C36FB35642699EAEF78C`
+  - Hardware / Electrical Engineering Resume — `CDC5B459495DFD25557C9E8D7E15A1F2CE76D4FBAE115CD52399F2BCD606F6F1`
+  - Research / Simulation Resume — `70E54FC65A07A13B4A8108A0A8F1D48BEBB0FD44AF7C4D8415E28FE68667F20B`
+- [ ] Verify the six public PDF URLs, MIME types, download behavior, checksum integrity, and keyboard/accessibility behavior in a Cloudflare preview after separate preview authorization. DOCX sources remain private.
+- [ ] Perform a human screen-reader check of PDF reading order and links if required for final accessibility signoff. Tagged PDFs and selectable text do not establish PDF/UA compliance.
 - [ ] Verify any future lab/institution profile or personal domain link before adding it.
 - [ ] Provide approved repository and demo links. There are no guessed URLs in the site.
 - [ ] Set final canonical URL and social preview assets after a domain is selected.

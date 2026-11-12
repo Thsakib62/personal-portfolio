@@ -53,7 +53,7 @@ test('approved portrait loads with its natural proportions on the homepage', asy
   })
 })
 
-test('document categories are future states without invented downloads', async ({
+test('six approved document categories have working download controls', async ({
   page,
 }) => {
   await page.goto('/cv')
@@ -69,8 +69,8 @@ test('document categories are future states without invented downloads', async (
   ]) {
     await expect(page.getByRole('heading', { name: title })).toBeVisible()
   }
-  await expect(cards.getByText('In preparation')).toHaveCount(6)
-  await expect(page.locator('a[download], a[href$=".pdf"]')).toHaveCount(0)
+  await expect(cards.getByText('In preparation')).toHaveCount(0)
+  await expect(cards.locator('a[download]')).toHaveCount(6)
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
 })
 

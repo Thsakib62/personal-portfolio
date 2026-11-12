@@ -150,8 +150,9 @@ export function CV() {
   return (
     <div className="container page-content">
       <PageIntro eyebrow="CV / Resume" title="The fuller picture.">
-        Academic and role-specific document categories for future downloads.
-        Each version will stay focused on its intended audience.
+        Download an academic CV or a resume focused on your area of interest.
+        Each version presents the same professional history for a different
+        audience.
       </PageIntro>
       <div className="document-grid">
         {cvDocumentCategories.map((item) => (

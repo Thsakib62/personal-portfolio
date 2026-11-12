@@ -1,4 +1,9 @@
-import type { CvDocument, Project, Publication } from './models'
+import {
+  publicPdfPath,
+  type CvDocument,
+  type Project,
+  type Publication,
+} from './models'
 export type { CvDocument, Project, Publication } from './models'
 
 // Public content combines owner-confirmed professional facts with source-checked
@@ -63,49 +68,71 @@ export const professionalContact = {
   ] satisfies ProfessionalProfileLink[],
 }
 
-// Proposed document types. No public downloads are available yet.
+// The six owner-approved PDFs are served from this site's documents directory.
 export const cvDocumentCategories: CvDocument[] = [
   {
-    state: 'preparation',
+    state: 'available',
     title: 'Academic Curriculum Vitae',
     description:
       'Academic background, research experience, publications, projects, and achievements.',
-    statusLabel: 'In preparation',
+    pdfUrl: publicPdfPath('/documents/Tahmid_Hasan_Sakib_Academic_CV.pdf'),
+    downloadLabel: 'Download academic curriculum vitae',
+    format: 'PDF',
   },
   {
-    state: 'preparation',
+    state: 'available',
     title: 'General Engineering Resume',
     description:
       'A concise view of professional background and transferable engineering qualifications.',
-    statusLabel: 'In preparation',
+    pdfUrl: publicPdfPath(
+      '/documents/Tahmid_Hasan_Sakib_General_Engineering_Resume.pdf',
+    ),
+    downloadLabel: 'Download general engineering resume',
+    format: 'PDF',
   },
   {
-    state: 'preparation',
+    state: 'available',
     title: 'Embedded Systems / Robotics Resume',
     description:
       'Embedded software, Linux, ROS 2, NVIDIA Jetson, sensors, integration, and testing.',
-    statusLabel: 'In preparation',
+    pdfUrl: publicPdfPath(
+      '/documents/Tahmid_Hasan_Sakib_Embedded_Robotics_Resume.pdf',
+    ),
+    downloadLabel: 'Download embedded systems and robotics resume',
+    format: 'PDF',
   },
   {
-    state: 'preparation',
+    state: 'available',
     title: 'AI / Machine Learning / Computer Vision Resume',
     description:
       'Machine learning, autonomous perception, adversarial robustness, and embedded AI.',
-    statusLabel: 'In preparation',
+    pdfUrl: publicPdfPath(
+      '/documents/Tahmid_Hasan_Sakib_AI_ML_Computer_Vision_Resume.pdf',
+    ),
+    downloadLabel: 'Download AI, machine learning, and computer vision resume',
+    format: 'PDF',
   },
   {
-    state: 'preparation',
+    state: 'available',
     title: 'Hardware / Electrical Engineering Resume',
     description:
       'Electronics, microcontrollers, hardware interfaces, testing, and validation.',
-    statusLabel: 'In preparation',
+    pdfUrl: publicPdfPath(
+      '/documents/Tahmid_Hasan_Sakib_Hardware_Electrical_Resume.pdf',
+    ),
+    downloadLabel: 'Download hardware and electrical engineering resume',
+    format: 'PDF',
   },
   {
-    state: 'preparation',
+    state: 'available',
     title: 'Research / Simulation Resume',
     description:
       'Research prototyping, CARLA, physical experiments, modeling, and hardware-in-the-loop evaluation.',
-    statusLabel: 'In preparation',
+    pdfUrl: publicPdfPath(
+      '/documents/Tahmid_Hasan_Sakib_Research_Simulation_Resume.pdf',
+    ),
+    downloadLabel: 'Download research and simulation resume',
+    format: 'PDF',
   },
 ]
 

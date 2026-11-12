@@ -105,6 +105,6 @@ test('homepage and shared navigation lead to professional contact', async ({
   }
   await page.goto('/cv')
   await expect(page.locator('.document-card')).toHaveCount(6)
-  await expect(page.getByText('In preparation')).toHaveCount(6)
-  await expect(page.locator('a[download], a[href$=".pdf"]')).toHaveCount(0)
+  await expect(page.getByText('In preparation')).toHaveCount(0)
+  await expect(page.locator('.document-card a[download]')).toHaveCount(6)
 })

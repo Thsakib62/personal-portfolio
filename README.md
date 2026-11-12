@@ -31,8 +31,10 @@ npm test
 
 The Research page separates accepted journal work, published conference papers, an extended abstract/poster contribution, a manuscript under review, and a registered manuscript awaiting full submission. BibTeX actions appear only for published conference records with the required citation fields. Final publisher metadata and some individual contribution details remain open in `CONTENT_TODO.md`.
 
-The site contains one approved professional portrait and six approved research figures. It hosts no research video or paper PDF. All six CV/resume categories display “In preparation” and have no download links. Contact uses owner-authorized institutional email and professional profiles; it has no phone number or contact form.
+The site contains one approved professional portrait, six approved research figures, and six owner-approved CV/resume PDFs in `public/documents/`. Each document category has a same-origin PDF download link. It hosts no research video or paper PDF. Contact uses owner-authorized institutional email and professional profiles; it has no phone number or contact form.
+
+The downloadable PDFs are public release copies of the academic CV and five role-focused resumes. Editable DOCX sources and private verification records are not part of this repository. Document availability is controlled by the typed entries in `src/data/portfolio.ts`; new or revised PDFs require separate owner approval and integrity checks before they are added.
 
 ## Hosting
 
-`public/_redirects` provides a static-host SPA fallback. For Cloudflare Pages, the build command is `npm run build` and the output directory is `dist`. Confirm the final production URL, metadata, robots/sitemap policy, research and asset approvals, and PDF release decisions before deployment. A completed audit and explicit owner approval are required; no deployment is performed by this repository.
+`public/_redirects` provides a static-host SPA fallback. For Cloudflare Pages, the build command is `npm run build` and the output directory is `dist`. Confirm the final production URL, metadata, robots/sitemap policy, research and asset approvals, and approved PDF integrity before deployment. A completed audit and separate deployment approval are required; this repository change does not deploy the site.

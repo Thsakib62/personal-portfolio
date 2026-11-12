@@ -93,8 +93,8 @@ test('all routes load directly without horizontal overflow or inaccessible conte
     await page.getByRole('button', { name: 'Switch to light theme' }).click()
   }
   await page.goto('/cv')
-  await expect(page.getByText('In preparation')).toHaveCount(6)
-  await expect(page.locator('a[download]')).toHaveCount(0)
+  await expect(page.getByText('In preparation')).toHaveCount(0)
+  await expect(page.locator('.document-card a[download]')).toHaveCount(6)
   await page.goto('/contact')
   await expect(
     page.locator('main a[href="mailto:tsakib42@tntech.edu"]'),

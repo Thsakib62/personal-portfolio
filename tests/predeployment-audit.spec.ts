@@ -1,5 +1,9 @@
 import { expect, test } from '@playwright/test'
-import { earlierProjects, researchProjects } from '../src/data/portfolio'
+import {
+  cvDocumentCategories,
+  earlierProjects,
+  researchProjects,
+} from '../src/data/portfolio'
 
 const mainRoutes = [
   '/',
@@ -13,6 +17,9 @@ const projectRoutes = [...researchProjects, ...earlierProjects].map(
   ({ id }) => `/projects/${id}`,
 )
 const routes = [...mainRoutes, ...projectRoutes, '/not-a-page']
+const approvedDocumentPaths = cvDocumentCategories.flatMap((document) =>
+  document.state === 'available' ? [document.pdfUrl] : [],
+)
 
 for (const width of [360, 1280]) {
   test(`direct routes and links stay usable at ${width}px`, async ({
@@ -65,7 +72,10 @@ for (const width of [360, 1280]) {
           ),
         )
       for (const path of internalPaths)
-        expect(routes, `${route} links to ${path}`).toContain(path)
+        expect(
+          [...routes, ...approvedDocumentPaths],
+          `${route} links to ${path}`,
+        ).toContain(path)
       const unsafeLinks = await page.locator('a').evaluateAll((links) =>
         links
           .filter((link) => {

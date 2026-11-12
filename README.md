@@ -17,6 +17,8 @@ npm test
 
 `npm test` runs Playwright against the production build. It uses `/usr/bin/chromium` when available, or `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`; otherwise install Chromium with Playwright. Browser coverage includes desktop, tablet, mobile, direct routes, filters, case-study navigation, themes, keyboard behavior, and automated axe scans.
 
+`npm run test:preview` is a separate, opt-in live Cloudflare Pages smoke suite. It requires both `PREVIEW_BASE_URL` and `PREVIEW_PROJECT`, accepts only an explicit preview-style `*.pages.dev` URL, and never starts a local server. Do not run it until a real preview deployment has been separately authorized. See `CLOUDFLARE_PREVIEW_VERIFICATION.md` for the command and scope.
+
 ## Structure
 
 - `src/data/portfolio.ts` — structured profile, verified contact links, independent and earlier projects, publication records, skills, education, experience, mentoring, achievements, and navigation.
@@ -37,4 +39,4 @@ The downloadable PDFs are public release copies of the academic CV and five role
 
 ## Hosting
 
-For Cloudflare Pages, use Git integration with `main` as the production branch, build command `npm run build`, and output directory `dist`. The committed `.nvmrc` requests Node 24; verify the resolved version in the Pages build log. Pages' built-in SPA fallback serves React Router deep links without a root `404.html` or `_redirects` rule. `public/documents/404.html` handles missing PDF paths on Pages; verify this behavior on a preview before launch. See `CLOUDFLARE_LAUNCH_CHECKLIST.md` for the URL, indexing, PDF integrity, preview, accessibility, and approval gates. No Cloudflare deployment is performed by repository preparation.
+For a future production release, Cloudflare Pages Git integration can use `main` as the production branch, build command `npm run build`, and output directory `dist`. Connecting `main` may immediately publish the site; do so only after explicit launch approval. The committed `.nvmrc` requests Node 24; verify the resolved version in the Pages build log. Pages' built-in SPA fallback serves React Router deep links without a root `404.html` or `_redirects` rule. `public/documents/404.html` is intended for missing PDF paths; verify the actual HTTP 404 on a Pages preview. See `CLOUDFLARE_LAUNCH_CHECKLIST.md` and `CLOUDFLARE_PREVIEW_VERIFICATION.md` for controlled setup and release gates. No Cloudflare deployment is performed by repository preparation.

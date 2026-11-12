@@ -12,6 +12,7 @@
     "preview": "vite preview --host 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "test": "playwright test",
+    "test:preview": "playwright test --config=playwright.preview.config.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

@@ -89,7 +89,7 @@ export function Research() {
             ],
             [
               'Systems trust',
-              'ROS 2 supply-chain security and repeatable hardware-in-the-loop evaluation.',
+              'ROS 2 supply-chain security and physical testbed validation.',
             ],
           ].map(([title, description]) => (
             <article key={title}>
